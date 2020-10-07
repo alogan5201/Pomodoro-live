@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/secondheader.ejs %>
+  </head>
+
+  <body>
+    
+
+    <div class="wrapper">
+      <audio id="myAudio" src="notification.mp3" preload="auto">
+        
+        
+        
+      </audio>  
+      <div id="pomodoro-container">
+           
+          <div id="pomodoro-clock">
+              <div id="pomodoro-timer"></div>
+              <div>
+                <input type="text" id="pomodoro-clock-task" placeholder="Enter your task..." />
+              </div>
+             
+              <div id="pomodoro-clock-actions">
+                <button  class = "o-play-btn">
+                    <i class="o-play-btn__icon" id="play-icon"></i>
+                    <!-- <i class="fas fa-pause hidden" id="pause-icon"></i> -->
+                    <div class="o-play-btn__mask"></div>
+                  </button>
+                  <form id ="rumiForm" action="/tomatos" method="POST">
+                   
+                    <div>
+                      <button id="pomodoro-stop" type="submit" class="hidden" value="clicked">
+                        <i class="fas fa-stop"></i>
+                      </button>
+                    </div>
+                  </form>
+              </div>
+              <!-- new -->
+              <div id="pomodoro-clock-title">
+                
+              </div>
+              <div id="pomodoro-clock-actions">
+                <div class="pomodoro-input">
+                  <label>Work Duration</label>
+                  <input name="input-work-duration" id="input-work-duration" type="number" />
+                </div>
+                <div class="pomodoro-input">
+                  <label>Break Duration</label>
+                  <input name="input-break-duration" id="input-break-duration" type="number" />
+                </div>
+              </div>
+              <div id="pomodoro-info">
+                <h3>Pomodoro Sessions </h3>
+                <ul class = "tomatos-block" id="pomodoro-sessions">
+    
+                  
+    
+                 
+                </ul>
+                <form action="/deleteAll" method="POST">
+                  
+                  <div id ="slide-in" class="box hide">
+                    <button class="dlt-button touch delete" id="myButton" type="submit"  value="clicked">
+                      
+                    </button>
+                  </div>
+                </form>
+              </div>
+              
+            <div>
+
+              
+<div>
+
+  <ul class="tomatos">
+    <% for ( let tomato of tomatos ) { %>
+      <li class="tomato">
+        <span><%= tomato.name %>
+        <span><%= tomato.time %>
+      </li>
+    <% } %>
+  
+  </ul>
+</div>
+
+
+    
+    
+  </div>
+  </div>
+  
+          
+            
+          </div>
+          </div>
+         <!-- <div class='test'><img src='./half-tomato-png.png' alt='test'></div> --> 
+        </div>
+      </div>
+      <script>
+        function submitRumiForm(e) {
+   e.preventDefault();
+   var formData = new FormData(document.getElementById("rumiForm"));
+   var options = {body: formData, method: "POST"}
+   fetch("/tomatos", options).then(function(response) {
+       return response.json();
+   }).then(function(data) {
+       // have the JSON response from the POST operation here
+       console.log(data);
+   }).catch(function(err) {
+       console.log(err);
+   })
+}
+
+document.getElementById("pomodoro-stop").addEventListener("click", submitRumiForm);
+
+$('.o-play-btn').on('click', function(){
+    $('#slide-in').addClass('show');
+});
+
+
+
+
+//document.getElementById("myButton").addEventListener("click", submitRumiForm);
+      </script>
+  </body>
+</html>
