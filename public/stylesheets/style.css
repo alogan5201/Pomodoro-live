@@ -99,6 +99,21 @@ animation-name: changemyColor;
   margin-top: 10px;
   margin-right:20px;
 }
+#work-session-status {
+  display:flex;
+  background-color: white;
+  border: solid black 2px;
+  width: 30vw;
+  margin-top: 10px;
+  margin-right:20px;
+  justify-content: center;
+  align-items:center;
+  text-align: center;
+  height: auto;
+  flex-wrap: wrap;
+}
+#work-session-status p { flex: 0 0 100%;}
+#work-session-status button{flex: 0 0 100%}
 #pomodoro-container {
   display: flex;
   flex-direction: column;

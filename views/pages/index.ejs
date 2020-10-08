@@ -50,6 +50,12 @@
                   <input name="input-break-duration" id="input-break-duration" type="number" />
                 </div>
               </div>
+              <div id = "work-session-status">
+                <p class="time-left">
+
+                </p> <br>
+                <button>TEST</button>
+              </div>
               <div id="pomodoro-info">
                 <h3>Pomodoro Sessions!!! </h3>
                 <ul class = "tomatos-block" id="pomodoro-sessions">
@@ -98,8 +104,15 @@
         </div>
       </div>
       <script>
+        let x = document.querySelector(".pomodoro-input");
+       
         function submitRumiForm(e) {
-   e.preventDefault();
+          const WorkSessionStatus = document.getElementById("pomodoro-info");
+         
+const myElapsedTime = WorkSessionStatus.className;
+          if (2 + 2 == 4){
+            console.log(`myELapsedTime = ${myElapsedTime}`) ;
+      e.preventDefault();
    var formData = new FormData(document.getElementById("rumiForm"));
    var options = {body: formData, method: "POST"}
    fetch("/tomatos", options).then(function(response) {
@@ -110,9 +123,24 @@
    }).catch(function(err) {
        console.log(err);
    })
-}
+  }
+ //else {console.log("no... less than 5")}
+};
+
+  
+  
+  
 
 document.getElementById("pomodoro-stop").addEventListener("click", submitRumiForm);
+
+function testButton(){
+ let x = document.getElementById("pomodoro-info");
+ let z = x.lastElementChild.innerHTML;
+  if(z == "Work : 1 seconds"){
+console.log("1 second bitch!!!!")
+  }
+};
+
 
 $('.o-play-btn').on('click', function(){
     $('#slide-in').addClass('show');

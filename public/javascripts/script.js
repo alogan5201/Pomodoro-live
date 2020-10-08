@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   window.onload = (event) => {
     let clockText = document.querySelector(".progressbar-text");
+    let WorkSessionStatus = document.getElementById("work-session-status");
+  
     window.setInterval(function(){ document.title = " "+" "+" "+" "+clockText.innerText ;}, 1000);
-    
+    //window.setInterval(function(){ timeLeft.innerHTML = timeSpentInCurrentSession }, 500);
+    window.setInterval(function(){ WorkSessionStatus.innerText = timeSpentInCurrentSession}, 400);
   };
   
 function myFunc(){
@@ -211,19 +214,24 @@ let deleteButton = document.querySelector("#slide-in");
   };
   const setUpdatedTimers = () => {
     if (type === "Work") {
+     
       currentTimeLeftInSession = updatedWorkSessionDuration
         ? updatedWorkSessionDuration
         : workSessionDuration;
+        
       workSessionDuration = currentTimeLeftInSession;
+      
     } else {
       currentTimeLeftInSession = updatedBreakSessionDuration
         ? updatedBreakSessionDuration
         : breakSessionDuration;
       breakSessionDuration = currentTimeLeftInSession;
+      
     }
   };
   const toggleClock = (reset) => {
     togglePlayPauseIcon(reset);
+   
     if (reset) {
       stopClock();
     } else {
@@ -254,14 +262,16 @@ let deleteButton = document.querySelector("#slide-in");
   };
 
   const stepDown = () => {
+    
     if (currentTimeLeftInSession > 0) {
       // decrease time left / increase time spent
       currentTimeLeftInSession--;
       timeSpentInCurrentSession++;
     } else if (currentTimeLeftInSession === 0) {
-      timeSpentInCurrentSession = 0;
+      timeSpentInCurrentSession = 0; 
       document.getElementById("myAudio").play();
       alert("Times up");
+      
       // Timer is over -> if work switch to break, viceversa
       if (type === "Work") {
         currentTimeLeftInSession = breakSessionDuration;
@@ -286,6 +296,7 @@ let deleteButton = document.querySelector("#slide-in");
   };
 
   const stopClock = () => {
+    
     setUpdatedTimers();
     displaySessionLog(type);
     //updateProgress(type);
@@ -296,16 +307,22 @@ let deleteButton = document.querySelector("#slide-in");
     currentTimeLeftInSession = workSessionDuration;
     displayCurrentTimeLeftInSession();
     type = "Work";
+    
     timeSpentInCurrentSession = 0;
   };
 
-  var displaySessionLog = function displaySessionLog(type) {
-
+ const displaySessionLog = function displaySessionLog(type) {
+    const WorkSessionStatus = document.getElementById("pomodoro-info");
+    const p = document.createElement("p");
+   // let WorkSessionStatusChild = WorkSessionStatus.lastElementChild;
     if (type === "Work") {
       // currentTaskLabel.value = "Break";
       sessionLabel = currentTaskLabel.value ? currentTaskLabel.value : "Work";
       workSessionLabel = sessionLabel;
+      
+WorkSessionStatus.setAttribute("class", timeSpentInCurrentSession);
     } else {
+      
       sessionLabel = "Break";
     }
     let xmlns = "http://www.w3.org/2000/svg";
@@ -344,18 +361,18 @@ let deleteButton = document.querySelector("#slide-in");
     pathFive.setAttribute("class", "line-draw");
     
     svg.appendChild(pathFive);
-    var elapsedTime = parseInt(timeSpentInCurrentSession / 60);
-    elapsedTime = elapsedTime > 1 ? elapsedTime : "< 1";
+   
     let tomatos = document.getElementById("pomodoro-sessions");
     let lastElm = tomatos.lastElementChild;
     //let mySVG = document.getElementById("mySVG");
     let li = document.createElement("li");
-    
-    if (!lastElm || lastElm.className == "full-tomato"){
+    if(sessionLabel == "Work" && timeSpentInCurrentSession > 5){
+
+ if (!lastElm || lastElm.className == "full-tomato"){
      li.setAttribute("class", "half-tomato");
       li.appendChild(svg);
       tomatos.appendChild(li);
-      console.log("half-tomato");
+     
     }
     else if (lastElm.className == "half-tomato"){
       lastElm.setAttribute("class", "full-tomato");
@@ -368,12 +385,26 @@ let deleteButton = document.querySelector("#slide-in");
       
       console.log("full-tomato");
     }
+else{console.log("nope");}
+    
 
-    else{console.log("nope");}
-   
 
 
-     
+
+
+    }
+  
+    /*let elapsedTime = parseInt(timeSpentInCurrentSession / 60);
+    elapsedTime = elapsedTime > 0 ? elapsedTime : "< 1";
+
+    const text = document.createTextNode(
+      `${sessionLabel} : ${elapsedTime} min`
+    );*/
+    const text = document.createTextNode(
+      timeSpentInCurrentSession
+    );
+    p.appendChild(text);
+    WorkSessionStatus.appendChild(p);
    
       
     
@@ -454,4 +485,5 @@ let fullTomatoURL = "url('" + 'http://www.sandboxmulti.com/wp-content/uploads/20
       type === "Work" ? workSessionDuration : breakSessionDuration;
     return (timeSpentInCurrentSession / sessionDuration) * 10;
   };
-},false);
+
+});
