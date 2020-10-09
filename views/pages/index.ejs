@@ -83,7 +83,7 @@
     <% for ( let tomato of tomatos ) { %>
       <li class="tomato">
         <span><%= tomato.name %>
-        <span><%= tomato.time %>
+        <span><%= tomato.month %>
       </li>
     <% } %>
   
@@ -104,14 +104,17 @@
         </div>
       </div>
       <script>
-        let x = document.querySelector(".pomodoro-input");
-       
+        
         function submitRumiForm(e) {
-          const WorkSessionStatus = document.getElementById("pomodoro-info");
+         let x = document.getElementById("work-session-status");
+        let z = x.innerText;
          
-const myElapsedTime = WorkSessionStatus.className;
-          if (2 + 2 == 4){
-            console.log(`myELapsedTime = ${myElapsedTime}`) ;
+
+          if (z == null){
+            console.log("its null")
+          }
+         else if (parseInt(z) > 2 ) {
+            console.log(`z --time-left = ${z}`) ;
       e.preventDefault();
    var formData = new FormData(document.getElementById("rumiForm"));
    var options = {body: formData, method: "POST"}
@@ -124,6 +127,7 @@ const myElapsedTime = WorkSessionStatus.className;
        console.log(err);
    })
   }
+  else{e.preventDefault();}
  //else {console.log("no... less than 5")}
 };
 

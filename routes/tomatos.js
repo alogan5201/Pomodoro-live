@@ -7,7 +7,7 @@ router.post('/', async (req, res, next) => {
 
   try {
     console.log(req.body);
-    await Tomato.create({name: 'half-tomato', time: '30'});
+    await Tomato.create({name: 'half-tomato', month: 'October'});
     
     res.redirect('/');
   } catch (e) {

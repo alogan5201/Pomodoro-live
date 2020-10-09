@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/archiveheader.ejs %>
+  </head>
+
+  <body>
+ <div class="wrapper">
+
+  <div id="archive-container">
+    <h3>Archive </h3>
+    <ul class = "archive-list">
+
+      
+      <% for ( let tomato of tomatos ) { %>
+        <li>
+          <span><%= tomato.name %>
+          <span><%= tomato.month %>
+        </li>
+      <% } %>
+     
+    </ul>
+    <ul class="post-archive">
+
+      
+    </ul>
+   
+  </div>
+
+ </div>
+   
+  </body>
+</html>

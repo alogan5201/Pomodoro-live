@@ -17,4 +17,18 @@ router.get('/', async (req, res, next) => {
 
 });
 
+router.get('/archive', async (req, res, next) => {
+
+  try {
+
+    let tomatos = await Tomato.find();
+    
+    res.render('pages/archive', { tomatos });
+
+  } catch (e) {
+    next(e);
+  }
+
+});
+
 module.exports = router;

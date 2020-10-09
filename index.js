@@ -77,7 +77,11 @@ function deleteTomatos(e){
     else{console.log("Collection length is NOT greater than 0")}
   */
 
-    //await Client.insertMany([{ name: 'half-tomato'}])
+    await Tomato.insertMany([
+    { name: 'half-tomato', month: 'October'},
+    { name: 'half-tomato', month: 'October'},  
+    { name: 'half-tomato', month: 'September'}
+  ]);
 
     
     // Insert some starter sample
@@ -113,7 +117,7 @@ express()
   .set('views', path.join(__dirname, 'views'))
   
 .get('/', (req, res) => res.render('pages/index'))
-  .get('/timer', (req, res) => res.render('pages/timer'))
+  .get('/archive', (req, res) => res.render('pages/archive'))
   
   .get('/cool', (req, res) => res.send(cool()))
   .get('/times', (req, res) => res.send(showTimes()))

@@ -92,6 +92,23 @@ animation-name: changemyColor;
   );
   padding-bottom: 200px;
 }
+#archive-container{
+  display:flex;
+  
+  width: 100vw;
+  height:100vh;
+ 
+  justify-content: center;
+  align-items:center;
+  text-align: center;
+
+  flex-wrap: wrap;
+}
+.archive-list{
+  background-color: white;
+  border: solid black 2px;
+  width: 60vw;
+}
 #pomodoro-info {
   background-color: white;
   border: solid black 2px;
