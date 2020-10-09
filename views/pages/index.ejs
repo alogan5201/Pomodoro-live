@@ -6,7 +6,22 @@
 
   <body>
     
-
+    <nav class="navbar">
+      <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
+              <i class="fa fa-bars"></i>
+          </label>
+      
+      <input type="checkbox" id="chkToggle"></input>
+      <ul class="main-nav" id="js-menu">
+       
+        <li>
+          <a href="/" class="nav-links">Timer</a>
+        </li>
+        <li>
+          <a href="/archive" class="nav-links">Archive</a>
+        </li>
+      </ul>
+    </nav>
     <div class="wrapper">
       <audio id="myAudio" src="notification.mp3" preload="auto">
         
@@ -84,6 +99,7 @@
       <li class="tomato">
         <span><%= tomato.name %>
         <span><%= tomato.month %>
+          <span><%= tomato.date %>
       </li>
     <% } %>
   

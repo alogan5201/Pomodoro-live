@@ -66,7 +66,11 @@ function deleteTomatos(e){
   try {
 
     const conn = await mongoose.connect(uri, opts);
-
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+const d = new Date();
+let currentMonth = monthNames[d.getMonth()];
     // Clean data for demo
     await Promise.all(
       Object.entries(conn.models).map(([k, m]) => m.deleteMany())
@@ -78,9 +82,9 @@ function deleteTomatos(e){
   */
 
     await Tomato.insertMany([
-    { name: 'half-tomato', month: 'October'},
-    { name: 'half-tomato', month: 'October'},  
-    { name: 'half-tomato', month: 'September'}
+    { name: 'half-tomato', month: currentMonth , date: new Date().toISOString()},
+    { name: 'half-tomato', month: currentMonth , date: new Date().toISOString()},  
+    { name: 'half-tomato', month: 'September', date: new Date().toISOString()}
   ]);
 
     

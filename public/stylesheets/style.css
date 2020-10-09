@@ -13,6 +13,111 @@ body {
 
   text-align: center;
 }
+/*NavBar*/ 
+.navbar {
+  padding-top: .5em;
+	padding-bottom: .5em;
+	border: 1px solid #a2a2a2;
+	background-color: #f4f4f4;
+	-webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+	line-height: 1.6;
+}
+
+.main-nav {
+  list-style-type: none;
+  display: none;
+}
+
+.nav-links,
+.logo {
+  text-decoration: none;
+  color: #000;
+}
+
+.main-nav li {
+  text-align: center;
+  margin: 15px auto;
+  text-transform: uppercase;
+  line-height: 1.6;
+  font-weight:300;
+}
+
+.logo {
+  display: inline-block;
+  font-size: 22px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.navbar-toggle {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+}
+
+#chkToggle {
+  display: none;
+}
+
+#chkToggle:checked + ul.main-nav {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 0;
+    height: 70px;
+    align-items: center;
+  }
+
+  #chkToggle:checked + ul.main-nav {
+    display: flex;
+  }
+
+  .main-nav {
+    display: flex;
+    margin-right: 30px;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .main-nav li {
+    margin: 0;
+  }
+
+  .nav-links {
+    margin-left: 40px;
+  }
+
+  .logo {
+    margin-top: 0;
+  }
+
+  .navbar-toggle {
+    display: none;
+  }
+
+  .logo:hover,
+  .nav-links:hover {
+    color: #718daa;
+  }
+}
+
+
+
+
+/*SVG*/
 .a{fill:#4caf50}.b{fill:#ff3d00}
   .tomato-fill {
     animation-duration: 1s;
@@ -105,6 +210,12 @@ animation-name: changemyColor;
   flex-wrap: wrap;
 }
 .archive-list{
+  background-color: white;
+  border: solid black 2px;
+  width: 60vw;
+  flex: 0 0 100%;
+}
+.post-archive{
   background-color: white;
   border: solid black 2px;
   width: 60vw;

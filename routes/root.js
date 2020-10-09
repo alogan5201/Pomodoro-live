@@ -21,7 +21,7 @@ router.get('/archive', async (req, res, next) => {
 
   try {
 
-    let tomatos = await Tomato.find();
+    let tomatos = await Tomato.find({}).sort({month: 1});
     
     res.render('pages/archive', { tomatos });
 
