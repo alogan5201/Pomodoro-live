@@ -75,10 +75,15 @@ body {
 @media screen and (min-width: 768px) {
   .navbar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-evenly;
     padding-bottom: 0;
     height: 70px;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .left-nav {
+    align-self: flex-start;
   }
 
   #chkToggle:checked + ul.main-nav {
@@ -90,6 +95,7 @@ body {
     margin-right: 30px;
     flex-direction: row;
     justify-content: flex-end;
+    align-self: flex-end;
   }
 
   .main-nav li {
@@ -189,7 +195,6 @@ body {
   }
 }
 .tomatos {
-  display: none;
   background-color: white;
   border: solid black 2px;
   width: 60vw;
@@ -224,7 +229,7 @@ body {
 }
 .archive-list {
   background-color: white;
-  border: solid black 2px;
+  /*border: solid black 2px;*/
   width: 60vw;
   flex: 0 0 100%;
 }
@@ -232,6 +237,7 @@ body {
   background-color: white;
   border: solid black 2px;
   width: 60vw;
+  min-height: 200px;
 }
 .post-archive h3 {
   text-align: center;
@@ -244,7 +250,8 @@ body {
   margin-right: 20px;
 }
 #work-session-status {
-  display: flex;
+  display: none;
+  /* display: flex;*/
   background-color: white;
   border: solid black 2px;
   width: 30vw;

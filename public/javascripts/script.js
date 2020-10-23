@@ -2,127 +2,196 @@ document.addEventListener("DOMContentLoaded", () => {
   window.onload = (event) => {
     let clockText = document.querySelector(".progressbar-text");
     let WorkSessionStatus = document.getElementById("work-session-status");
-  
-    window.setInterval(function(){ document.title = " "+" "+" "+" "+clockText.innerText ;}, 1000);
+
+    window.setInterval(function () {
+      document.title = " " + " " + " " + " " + clockText.innerText;
+    }, 1000);
     //window.setInterval(function(){ timeLeft.innerHTML = timeSpentInCurrentSession }, 500);
-    window.setInterval(function(){ WorkSessionStatus.innerText = timeSpentInCurrentSession}, 400);
+    window.setInterval(function () {
+      WorkSessionStatus.innerText = timeSpentInCurrentSession;
+    }, 400);
+
+    function myFunc() {
+      var today = new Date();
+      var dd = today.getDate();
+
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+      if (dd < 10) {
+        dd = "0" + dd;
+      }
+
+      if (mm < 10) {
+        mm = "0" + mm;
+      }
+      today = mm + "-" + dd + "-" + yyyy;
+      let ul = document.querySelector("ul.tomatos-block");
+      let deleteButton = document.querySelector("#slide-in");
+      let fullTomato = document.createElement("li");
+      fullTomato.setAttribute("class", "full-tomato");
+      /* let listItems = document.querySelector(".tomatos").children;
+      const records = Array.from(listItems);
+  */
+      var objs = document.querySelectorAll(".tomatos li");
+      var currentTomatos_arr = [];
+
+      if (objs) {
+        for (var i = 0; i < objs.length; i++) {
+          var date = objs[i].querySelector("#date").innerText;
+          if (date == today) {
+            currentTomatos_arr.push({
+              date: date,
+            });
+          }
+        }
+        console.log(JSON.stringify(currentTomatos_arr));
+      }
+      const records = currentTomatos_arr;
+      var i;
+
+      if (records.length > 0) {
+        deleteButton.classList.add("show");
+        console.log("greater than 0");
+      }
+      for (let i = 1; records.length > i; i += 2) {
+        let xmlns = "http://www.w3.org/2000/svg";
+        let svg = document.createElementNS(xmlns, "svg");
+        svg.setAttribute("width", 100);
+        svg.setAttribute("height", 100);
+        svg.setAttribute("viewBox", "0 0 1667 1667");
+        svg.setAttribute("stroke-linejoin", "round");
+        svg.setAttribute("id", "mySVG");
+
+        let pathOne = document.createElementNS(xmlns, "path");
+        pathOne.setAttribute(
+          "d",
+          "M856.2 151.9L759.3 393 517.6 496.8l19.2 163.6 171.8-63.7 147 152.4.7-597.3z"
+        );
+        pathOne.setAttribute("class", "a");
+        svg.appendChild(pathOne);
+
+        let pathTwo = document.createElementNS(xmlns, "path");
+        pathTwo.setAttribute(
+          "d",
+          "M848.9 177.6l73.8 43.3 23.1 197.9 241.7 103.8-19.2 163.6-171.8-63.6-147 152.4-.7-597.3z"
+        );
+        pathTwo.setAttribute("class", "a");
+        svg.appendChild(pathTwo);
+
+        let pathThree = document.createElementNS(xmlns, "path");
+        pathThree.setAttribute(
+          "d",
+          "M855.7 723l-150.9-97.1L523 637.5l-40.5-51.7-54.1 16.1-146.9 120.2-40 182.4 9 95.6-4.7 87.1 105.6 235.3 241.2 113 259.5 68.9 3.6-781.5z"
+        );
+        pathThree.setAttribute("class", "b tomato-fill");
+
+        svg.appendChild(pathThree);
+
+        let pathFour = document.createElementNS(xmlns, "path");
+        pathFour.setAttribute(
+          "d",
+          "M814.3 716.7l150.9-97.1 181.8 11.6 40.5-51.7 54.1 16.1 146.9 120.2 40 182.4-9 95.6 4.7 87.1-105.5 235.3-241.2 113-259.5 68.9-3.6-781.5z"
+        );
+        pathFour.setAttribute("class", "tomato-fill");
+        pathFour.setAttribute("id", "pathNumFour");
+        svg.appendChild(pathFour);
+
+        let pathFive = document.createElementNS(xmlns, "path");
+        pathFive.setAttribute(
+          "d",
+          "M1162.3 501.3c-42.7-98.5-155.1-116.1-224.6-118.8 1.4-46.1 9.3-79.8 54.2-110.9 9.4-6.5 15-17.2 15-28.6 0-9.2-3.7-18-10.2-24.5l-69.4-69.4c-8.6-8.6-21.2-12.1-33-9.1-147.6 37.2-163.2 145.2-164.9 242.5-69.3 2.6-182.2 20.1-225 118.8-182.6 101-296 280-296 471 0 306.3 280.4 555.6 625 555.6s625-249.2 625-555.6c0-191-113.4-370-296-470.9zm-606.8 89c0-72.1 25.2-138.9 208.3-138.9 19 0 34.7-15.7 34.7-34.7 0-105.4 4.8-173.6 94.1-204l28.1 28c-53.4 41.7-52.8 125.1-52.8 176 0 19 15.7 34.7 34.7 34.7 183.1 0 208.3 66.8 208.3 138.9v32.2c-58.6-8.2-120.8-36.2-142.2-81.8-5.7-12.1-18-19.9-31.4-19.9-19 0-34.7 15.7-34.7 34.7 0 88.2-55.8 136.7-68.7 138.9-14.4-2.3-70.2-50.7-70.2-138.9 0-16-11-30-26.6-33.8-2.7-.6-5.4-1-8.1-.9-13 0-25 7.3-30.9 19-25.8 50.5-90.4 75-142.7 82.5v-32zm277.8 868.1c-306.3 0-555.6-218.1-555.6-486.1 0-149.6 76.8-286.9 208.3-378.6v66.2c0 19 15.7 34.7 34.7 34.7 66.7 0 131.8-21 185.8-60.2C731.7 712.7 790.3 764 833.2 764c42.7 0 101-50.9 126.3-128.6 54.3 38.8 119.4 59.5 186.2 59.2 19 0 34.7-15.7 34.7-34.7v-66.2c131.6 91.8 208.3 229.1 208.3 378.7 0 268-249.2 486.1-555.6 486.1z"
+        );
+
+        pathFive.setAttribute("class", "line-draw");
+
+        svg.appendChild(pathFive);
+
+        let t = document.createElement("li");
+        t.setAttribute("class", "full-tomato");
+        /*let element = svg.getElementById("pathNumFour");
+        element.setAttributeNS(null, 'class', "tomato-fill");*/
+        t.appendChild(svg);
+
+        records[i] = t;
+
+        ul.appendChild(t);
+        console.log(records.length);
+      }
+
+      if (records.length % 2 != 0) {
+        let xmlns = "http://www.w3.org/2000/svg";
+        let svg = document.createElementNS(xmlns, "svg");
+        svg.setAttribute("width", 100);
+        svg.setAttribute("height", 100);
+        svg.setAttribute("viewBox", "0 0 1667 1667");
+        svg.setAttribute("stroke-linejoin", "round");
+        svg.setAttribute("id", "mySVG");
+
+        let pathOne = document.createElementNS(xmlns, "path");
+        pathOne.setAttribute(
+          "d",
+          "M856.2 151.9L759.3 393 517.6 496.8l19.2 163.6 171.8-63.7 147 152.4.7-597.3z"
+        );
+        pathOne.setAttribute("class", "a");
+        svg.appendChild(pathOne);
+
+        let pathTwo = document.createElementNS(xmlns, "path");
+        pathTwo.setAttribute(
+          "d",
+          "M848.9 177.6l73.8 43.3 23.1 197.9 241.7 103.8-19.2 163.6-171.8-63.6-147 152.4-.7-597.3z"
+        );
+        pathTwo.setAttribute("class", "a");
+        svg.appendChild(pathTwo);
+
+        let pathThree = document.createElementNS(xmlns, "path");
+        pathThree.setAttribute(
+          "d",
+          "M855.7 723l-150.9-97.1L523 637.5l-40.5-51.7-54.1 16.1-146.9 120.2-40 182.4 9 95.6-4.7 87.1 105.6 235.3 241.2 113 259.5 68.9 3.6-781.5z"
+        );
+        pathThree.setAttribute("class", "b tomato-fill");
+
+        svg.appendChild(pathThree);
+
+        let pathFour = document.createElementNS(xmlns, "path");
+        pathFour.setAttribute(
+          "d",
+          "M814.3 716.7l150.9-97.1 181.8 11.6 40.5-51.7 54.1 16.1 146.9 120.2 40 182.4-9 95.6 4.7 87.1-105.5 235.3-241.2 113-259.5 68.9-3.6-781.5z"
+        );
+        pathFour.setAttribute("class", "b white");
+        pathFour.setAttribute("id", "pathNumFour");
+        svg.appendChild(pathFour);
+
+        let pathFive = document.createElementNS(xmlns, "path");
+        pathFive.setAttribute(
+          "d",
+          "M1162.3 501.3c-42.7-98.5-155.1-116.1-224.6-118.8 1.4-46.1 9.3-79.8 54.2-110.9 9.4-6.5 15-17.2 15-28.6 0-9.2-3.7-18-10.2-24.5l-69.4-69.4c-8.6-8.6-21.2-12.1-33-9.1-147.6 37.2-163.2 145.2-164.9 242.5-69.3 2.6-182.2 20.1-225 118.8-182.6 101-296 280-296 471 0 306.3 280.4 555.6 625 555.6s625-249.2 625-555.6c0-191-113.4-370-296-470.9zm-606.8 89c0-72.1 25.2-138.9 208.3-138.9 19 0 34.7-15.7 34.7-34.7 0-105.4 4.8-173.6 94.1-204l28.1 28c-53.4 41.7-52.8 125.1-52.8 176 0 19 15.7 34.7 34.7 34.7 183.1 0 208.3 66.8 208.3 138.9v32.2c-58.6-8.2-120.8-36.2-142.2-81.8-5.7-12.1-18-19.9-31.4-19.9-19 0-34.7 15.7-34.7 34.7 0 88.2-55.8 136.7-68.7 138.9-14.4-2.3-70.2-50.7-70.2-138.9 0-16-11-30-26.6-33.8-2.7-.6-5.4-1-8.1-.9-13 0-25 7.3-30.9 19-25.8 50.5-90.4 75-142.7 82.5v-32zm277.8 868.1c-306.3 0-555.6-218.1-555.6-486.1 0-149.6 76.8-286.9 208.3-378.6v66.2c0 19 15.7 34.7 34.7 34.7 66.7 0 131.8-21 185.8-60.2C731.7 712.7 790.3 764 833.2 764c42.7 0 101-50.9 126.3-128.6 54.3 38.8 119.4 59.5 186.2 59.2 19 0 34.7-15.7 34.7-34.7v-66.2c131.6 91.8 208.3 229.1 208.3 378.7 0 268-249.2 486.1-555.6 486.1z"
+        );
+
+        pathFive.setAttribute("class", "line-draw");
+        svg.appendChild(pathFive);
+        let b = document.createElement("li");
+        b.setAttribute("class", "half-tomato");
+        b.appendChild(svg);
+
+        records[i] = b;
+
+        ul.appendChild(b);
+      }
+    }
+    myFunc();
   };
-  
-function myFunc(){
 
-  
- let ul = document.querySelector("ul.tomatos-block");
-let deleteButton = document.querySelector("#slide-in");
-  let fullTomato = document.createElement("li");
-  fullTomato.setAttribute("class", "full-tomato");
-  let listItems = document.querySelector(".tomatos").children;
-  const records = Array.from(listItems);
-  
-  var i;
-  if (records.length > 0){
-    
-    deleteButton.classList.add("show");
-    console.log("greater than 0");}
-  for (let i = 1; records.length > i; i+= 2){
-   
-    
-
-  let xmlns = "http://www.w3.org/2000/svg";
-  let svg = document.createElementNS(xmlns, "svg");
-  svg.setAttribute("width", 100);
-  svg.setAttribute("height", 100);
-  svg.setAttribute("viewBox", "0 0 1667 1667");
-  svg.setAttribute("stroke-linejoin", "round");
-  svg.setAttribute("id", "mySVG");
-  
-  let pathOne = document.createElementNS(xmlns, "path");
-  pathOne.setAttribute("d", "M856.2 151.9L759.3 393 517.6 496.8l19.2 163.6 171.8-63.7 147 152.4.7-597.3z" );
-  pathOne.setAttribute("class", "a")
-  svg.appendChild(pathOne);
-  
-  let pathTwo = document.createElementNS(xmlns, "path");
-  pathTwo.setAttribute("d", "M848.9 177.6l73.8 43.3 23.1 197.9 241.7 103.8-19.2 163.6-171.8-63.6-147 152.4-.7-597.3z");
-  pathTwo.setAttribute("class", "a");
-  svg.appendChild(pathTwo);
-  
-  let pathThree = document.createElementNS(xmlns, "path");
-  pathThree.setAttribute("d", "M855.7 723l-150.9-97.1L523 637.5l-40.5-51.7-54.1 16.1-146.9 120.2-40 182.4 9 95.6-4.7 87.1 105.6 235.3 241.2 113 259.5 68.9 3.6-781.5z");
-  pathThree.setAttribute("class", "b tomato-fill");
-  
-  svg.appendChild(pathThree);
-  
-  let pathFour = document.createElementNS(xmlns, "path");
-  pathFour.setAttribute("d", "M814.3 716.7l150.9-97.1 181.8 11.6 40.5-51.7 54.1 16.1 146.9 120.2 40 182.4-9 95.6 4.7 87.1-105.5 235.3-241.2 113-259.5 68.9-3.6-781.5z");
-  pathFour.setAttribute("class", "tomato-fill");
-  pathFour.setAttribute("id","pathNumFour");
-  svg.appendChild(pathFour);
-  
-  let pathFive =  document.createElementNS(xmlns, "path");
-  pathFive.setAttribute("d", "M1162.3 501.3c-42.7-98.5-155.1-116.1-224.6-118.8 1.4-46.1 9.3-79.8 54.2-110.9 9.4-6.5 15-17.2 15-28.6 0-9.2-3.7-18-10.2-24.5l-69.4-69.4c-8.6-8.6-21.2-12.1-33-9.1-147.6 37.2-163.2 145.2-164.9 242.5-69.3 2.6-182.2 20.1-225 118.8-182.6 101-296 280-296 471 0 306.3 280.4 555.6 625 555.6s625-249.2 625-555.6c0-191-113.4-370-296-470.9zm-606.8 89c0-72.1 25.2-138.9 208.3-138.9 19 0 34.7-15.7 34.7-34.7 0-105.4 4.8-173.6 94.1-204l28.1 28c-53.4 41.7-52.8 125.1-52.8 176 0 19 15.7 34.7 34.7 34.7 183.1 0 208.3 66.8 208.3 138.9v32.2c-58.6-8.2-120.8-36.2-142.2-81.8-5.7-12.1-18-19.9-31.4-19.9-19 0-34.7 15.7-34.7 34.7 0 88.2-55.8 136.7-68.7 138.9-14.4-2.3-70.2-50.7-70.2-138.9 0-16-11-30-26.6-33.8-2.7-.6-5.4-1-8.1-.9-13 0-25 7.3-30.9 19-25.8 50.5-90.4 75-142.7 82.5v-32zm277.8 868.1c-306.3 0-555.6-218.1-555.6-486.1 0-149.6 76.8-286.9 208.3-378.6v66.2c0 19 15.7 34.7 34.7 34.7 66.7 0 131.8-21 185.8-60.2C731.7 712.7 790.3 764 833.2 764c42.7 0 101-50.9 126.3-128.6 54.3 38.8 119.4 59.5 186.2 59.2 19 0 34.7-15.7 34.7-34.7v-66.2c131.6 91.8 208.3 229.1 208.3 378.7 0 268-249.2 486.1-555.6 486.1z");
-  
-  pathFive.setAttribute("class", "line-draw");
-  
-  svg.appendChild(pathFive); 
-
-    let t = document.createElement("li");
-    t.setAttribute("class", "full-tomato");
-    /*let element = svg.getElementById("pathNumFour");
-      element.setAttributeNS(null, 'class', "tomato-fill");*/
-    t.appendChild(svg);
-      
-    
-    records[i]= t;
-   
-    ul.appendChild(t);
-    console.log(records.length);}
-  
-  
-  if (records.length%2 != 0){
-    let xmlns = "http://www.w3.org/2000/svg";
-    let svg = document.createElementNS(xmlns, "svg");
-    svg.setAttribute("width", 100);
-    svg.setAttribute("height", 100);
-    svg.setAttribute("viewBox", "0 0 1667 1667");
-    svg.setAttribute("stroke-linejoin", "round");
-    svg.setAttribute("id", "mySVG");
-    
-    let pathOne = document.createElementNS(xmlns, "path");
-    pathOne.setAttribute("d", "M856.2 151.9L759.3 393 517.6 496.8l19.2 163.6 171.8-63.7 147 152.4.7-597.3z" );
-    pathOne.setAttribute("class", "a")
-    svg.appendChild(pathOne);
-    
-    let pathTwo = document.createElementNS(xmlns, "path");
-    pathTwo.setAttribute("d", "M848.9 177.6l73.8 43.3 23.1 197.9 241.7 103.8-19.2 163.6-171.8-63.6-147 152.4-.7-597.3z");
-    pathTwo.setAttribute("class", "a");
-    svg.appendChild(pathTwo);
-    
-    let pathThree = document.createElementNS(xmlns, "path");
-    pathThree.setAttribute("d", "M855.7 723l-150.9-97.1L523 637.5l-40.5-51.7-54.1 16.1-146.9 120.2-40 182.4 9 95.6-4.7 87.1 105.6 235.3 241.2 113 259.5 68.9 3.6-781.5z");
-    pathThree.setAttribute("class", "b tomato-fill");
-    
-    svg.appendChild(pathThree);
-    
-    let pathFour = document.createElementNS(xmlns, "path");
-    pathFour.setAttribute("d", "M814.3 716.7l150.9-97.1 181.8 11.6 40.5-51.7 54.1 16.1 146.9 120.2 40 182.4-9 95.6 4.7 87.1-105.5 235.3-241.2 113-259.5 68.9-3.6-781.5z");
-    pathFour.setAttribute("class", "b white");
-    pathFour.setAttribute("id","pathNumFour");
-    svg.appendChild(pathFour);
-    
-    let pathFive =  document.createElementNS(xmlns, "path");
-    pathFive.setAttribute("d", "M1162.3 501.3c-42.7-98.5-155.1-116.1-224.6-118.8 1.4-46.1 9.3-79.8 54.2-110.9 9.4-6.5 15-17.2 15-28.6 0-9.2-3.7-18-10.2-24.5l-69.4-69.4c-8.6-8.6-21.2-12.1-33-9.1-147.6 37.2-163.2 145.2-164.9 242.5-69.3 2.6-182.2 20.1-225 118.8-182.6 101-296 280-296 471 0 306.3 280.4 555.6 625 555.6s625-249.2 625-555.6c0-191-113.4-370-296-470.9zm-606.8 89c0-72.1 25.2-138.9 208.3-138.9 19 0 34.7-15.7 34.7-34.7 0-105.4 4.8-173.6 94.1-204l28.1 28c-53.4 41.7-52.8 125.1-52.8 176 0 19 15.7 34.7 34.7 34.7 183.1 0 208.3 66.8 208.3 138.9v32.2c-58.6-8.2-120.8-36.2-142.2-81.8-5.7-12.1-18-19.9-31.4-19.9-19 0-34.7 15.7-34.7 34.7 0 88.2-55.8 136.7-68.7 138.9-14.4-2.3-70.2-50.7-70.2-138.9 0-16-11-30-26.6-33.8-2.7-.6-5.4-1-8.1-.9-13 0-25 7.3-30.9 19-25.8 50.5-90.4 75-142.7 82.5v-32zm277.8 868.1c-306.3 0-555.6-218.1-555.6-486.1 0-149.6 76.8-286.9 208.3-378.6v66.2c0 19 15.7 34.7 34.7 34.7 66.7 0 131.8-21 185.8-60.2C731.7 712.7 790.3 764 833.2 764c42.7 0 101-50.9 126.3-128.6 54.3 38.8 119.4 59.5 186.2 59.2 19 0 34.7-15.7 34.7-34.7v-66.2c131.6 91.8 208.3 229.1 208.3 378.7 0 268-249.2 486.1-555.6 486.1z");
-    
-    pathFive.setAttribute("class", "line-draw");
-    svg.appendChild(pathFive);
-  let b = document.createElement("li");
-    b.setAttribute("class", "half-tomato");
-    b.appendChild(svg)
-    
-    records[i]= b;
-   
-    ul.appendChild(b);}
+  /*function currentTomatos() {
+    let listItems = document.querySelector(".tomatos");
+    let dateElements = listItems.document.querySelectorAll("span");
+    for (var x in dateElements) {
+      console.log(x + ": " + dateElements[x]);
+    }
   }
-  myFunc();
-/*
+*/
+
+  // currentTomatos();
+  /*
   console.log('Client-side code running');
 
   const button = document.getElementById('myButton');
@@ -142,12 +211,7 @@ let deleteButton = document.querySelector("#slide-in");
       });
   });
   */
-  
-  
-  
-  
 
-  
   const startButton = document.querySelector(".o-play-btn");
 
   const stopButton = document.querySelector("#pomodoro-stop");
@@ -202,11 +266,11 @@ let deleteButton = document.querySelector("#slide-in");
       this.score++;
     }
   }
-  const clientCount = function clientCount(){
+  const clientCount = function clientCount() {
     let x = document.querySelector(".tomatos").children;
     console.log(Array.from(x));
   };
- 
+
   const july2020 = new AndrewsProgress(30);
 
   const minuteToSeconds = (mins) => {
@@ -214,24 +278,21 @@ let deleteButton = document.querySelector("#slide-in");
   };
   const setUpdatedTimers = () => {
     if (type === "Work") {
-     
       currentTimeLeftInSession = updatedWorkSessionDuration
         ? updatedWorkSessionDuration
         : workSessionDuration;
-        
+
       workSessionDuration = currentTimeLeftInSession;
-      
     } else {
       currentTimeLeftInSession = updatedBreakSessionDuration
         ? updatedBreakSessionDuration
         : breakSessionDuration;
       breakSessionDuration = currentTimeLeftInSession;
-      
     }
   };
   const toggleClock = (reset) => {
     togglePlayPauseIcon(reset);
-   
+
     if (reset) {
       stopClock();
     } else {
@@ -262,16 +323,15 @@ let deleteButton = document.querySelector("#slide-in");
   };
 
   const stepDown = () => {
-    
     if (currentTimeLeftInSession > 0) {
       // decrease time left / increase time spent
       currentTimeLeftInSession--;
       timeSpentInCurrentSession++;
     } else if (currentTimeLeftInSession === 0) {
-      timeSpentInCurrentSession = 0; 
+      timeSpentInCurrentSession = 0;
       document.getElementById("myAudio").play();
       alert("Times up");
-      
+
       // Timer is over -> if work switch to break, viceversa
       if (type === "Work") {
         currentTimeLeftInSession = breakSessionDuration;
@@ -296,7 +356,6 @@ let deleteButton = document.querySelector("#slide-in");
   };
 
   const stopClock = () => {
-    
     setUpdatedTimers();
     displaySessionLog(type);
     //updateProgress(type);
@@ -307,22 +366,21 @@ let deleteButton = document.querySelector("#slide-in");
     currentTimeLeftInSession = workSessionDuration;
     displayCurrentTimeLeftInSession();
     type = "Work";
-    
+
     timeSpentInCurrentSession = 0;
   };
 
- const displaySessionLog = function displaySessionLog(type) {
+  const displaySessionLog = function displaySessionLog(type) {
     const WorkSessionStatus = document.getElementById("pomodoro-info");
     const p = document.createElement("p");
-   // let WorkSessionStatusChild = WorkSessionStatus.lastElementChild;
+    // let WorkSessionStatusChild = WorkSessionStatus.lastElementChild;
     if (type === "Work") {
       // currentTaskLabel.value = "Break";
       sessionLabel = currentTaskLabel.value ? currentTaskLabel.value : "Work";
       workSessionLabel = sessionLabel;
-      
-WorkSessionStatus.setAttribute("class", timeSpentInCurrentSession);
+
+      WorkSessionStatus.setAttribute("class", timeSpentInCurrentSession);
     } else {
-      
       sessionLabel = "Break";
     }
     let xmlns = "http://www.w3.org/2000/svg";
@@ -332,85 +390,83 @@ WorkSessionStatus.setAttribute("class", timeSpentInCurrentSession);
     svg.setAttribute("viewBox", "0 0 1667 1667");
     svg.setAttribute("stroke-linejoin", "round");
     svg.setAttribute("id", "mySVG");
-    
+
     let pathOne = document.createElementNS(xmlns, "path");
-    pathOne.setAttribute("d", "M856.2 151.9L759.3 393 517.6 496.8l19.2 163.6 171.8-63.7 147 152.4.7-597.3z" );
-    pathOne.setAttribute("class", "a")
+    pathOne.setAttribute(
+      "d",
+      "M856.2 151.9L759.3 393 517.6 496.8l19.2 163.6 171.8-63.7 147 152.4.7-597.3z"
+    );
+    pathOne.setAttribute("class", "a");
     svg.appendChild(pathOne);
-    
+
     let pathTwo = document.createElementNS(xmlns, "path");
-    pathTwo.setAttribute("d", "M848.9 177.6l73.8 43.3 23.1 197.9 241.7 103.8-19.2 163.6-171.8-63.6-147 152.4-.7-597.3z");
+    pathTwo.setAttribute(
+      "d",
+      "M848.9 177.6l73.8 43.3 23.1 197.9 241.7 103.8-19.2 163.6-171.8-63.6-147 152.4-.7-597.3z"
+    );
     pathTwo.setAttribute("class", "a");
     svg.appendChild(pathTwo);
-    
+
     let pathThree = document.createElementNS(xmlns, "path");
-    pathThree.setAttribute("d", "M855.7 723l-150.9-97.1L523 637.5l-40.5-51.7-54.1 16.1-146.9 120.2-40 182.4 9 95.6-4.7 87.1 105.6 235.3 241.2 113 259.5 68.9 3.6-781.5z");
+    pathThree.setAttribute(
+      "d",
+      "M855.7 723l-150.9-97.1L523 637.5l-40.5-51.7-54.1 16.1-146.9 120.2-40 182.4 9 95.6-4.7 87.1 105.6 235.3 241.2 113 259.5 68.9 3.6-781.5z"
+    );
     pathThree.setAttribute("class", "b tomato-fill");
-    
+
     svg.appendChild(pathThree);
-    
+
     let pathFour = document.createElementNS(xmlns, "path");
-    pathFour.setAttribute("d", "M814.3 716.7l150.9-97.1 181.8 11.6 40.5-51.7 54.1 16.1 146.9 120.2 40 182.4-9 95.6 4.7 87.1-105.5 235.3-241.2 113-259.5 68.9-3.6-781.5z");
+    pathFour.setAttribute(
+      "d",
+      "M814.3 716.7l150.9-97.1 181.8 11.6 40.5-51.7 54.1 16.1 146.9 120.2 40 182.4-9 95.6 4.7 87.1-105.5 235.3-241.2 113-259.5 68.9-3.6-781.5z"
+    );
     pathFour.setAttribute("class", "b white");
-    pathFour.setAttribute("id","pathNumFour");
+    pathFour.setAttribute("id", "pathNumFour");
     svg.appendChild(pathFour);
-    
-    let pathFive =  document.createElementNS(xmlns, "path");
-    pathFive.setAttribute("d", "M1162.3 501.3c-42.7-98.5-155.1-116.1-224.6-118.8 1.4-46.1 9.3-79.8 54.2-110.9 9.4-6.5 15-17.2 15-28.6 0-9.2-3.7-18-10.2-24.5l-69.4-69.4c-8.6-8.6-21.2-12.1-33-9.1-147.6 37.2-163.2 145.2-164.9 242.5-69.3 2.6-182.2 20.1-225 118.8-182.6 101-296 280-296 471 0 306.3 280.4 555.6 625 555.6s625-249.2 625-555.6c0-191-113.4-370-296-470.9zm-606.8 89c0-72.1 25.2-138.9 208.3-138.9 19 0 34.7-15.7 34.7-34.7 0-105.4 4.8-173.6 94.1-204l28.1 28c-53.4 41.7-52.8 125.1-52.8 176 0 19 15.7 34.7 34.7 34.7 183.1 0 208.3 66.8 208.3 138.9v32.2c-58.6-8.2-120.8-36.2-142.2-81.8-5.7-12.1-18-19.9-31.4-19.9-19 0-34.7 15.7-34.7 34.7 0 88.2-55.8 136.7-68.7 138.9-14.4-2.3-70.2-50.7-70.2-138.9 0-16-11-30-26.6-33.8-2.7-.6-5.4-1-8.1-.9-13 0-25 7.3-30.9 19-25.8 50.5-90.4 75-142.7 82.5v-32zm277.8 868.1c-306.3 0-555.6-218.1-555.6-486.1 0-149.6 76.8-286.9 208.3-378.6v66.2c0 19 15.7 34.7 34.7 34.7 66.7 0 131.8-21 185.8-60.2C731.7 712.7 790.3 764 833.2 764c42.7 0 101-50.9 126.3-128.6 54.3 38.8 119.4 59.5 186.2 59.2 19 0 34.7-15.7 34.7-34.7v-66.2c131.6 91.8 208.3 229.1 208.3 378.7 0 268-249.2 486.1-555.6 486.1z");
-    
+
+    let pathFive = document.createElementNS(xmlns, "path");
+    pathFive.setAttribute(
+      "d",
+      "M1162.3 501.3c-42.7-98.5-155.1-116.1-224.6-118.8 1.4-46.1 9.3-79.8 54.2-110.9 9.4-6.5 15-17.2 15-28.6 0-9.2-3.7-18-10.2-24.5l-69.4-69.4c-8.6-8.6-21.2-12.1-33-9.1-147.6 37.2-163.2 145.2-164.9 242.5-69.3 2.6-182.2 20.1-225 118.8-182.6 101-296 280-296 471 0 306.3 280.4 555.6 625 555.6s625-249.2 625-555.6c0-191-113.4-370-296-470.9zm-606.8 89c0-72.1 25.2-138.9 208.3-138.9 19 0 34.7-15.7 34.7-34.7 0-105.4 4.8-173.6 94.1-204l28.1 28c-53.4 41.7-52.8 125.1-52.8 176 0 19 15.7 34.7 34.7 34.7 183.1 0 208.3 66.8 208.3 138.9v32.2c-58.6-8.2-120.8-36.2-142.2-81.8-5.7-12.1-18-19.9-31.4-19.9-19 0-34.7 15.7-34.7 34.7 0 88.2-55.8 136.7-68.7 138.9-14.4-2.3-70.2-50.7-70.2-138.9 0-16-11-30-26.6-33.8-2.7-.6-5.4-1-8.1-.9-13 0-25 7.3-30.9 19-25.8 50.5-90.4 75-142.7 82.5v-32zm277.8 868.1c-306.3 0-555.6-218.1-555.6-486.1 0-149.6 76.8-286.9 208.3-378.6v66.2c0 19 15.7 34.7 34.7 34.7 66.7 0 131.8-21 185.8-60.2C731.7 712.7 790.3 764 833.2 764c42.7 0 101-50.9 126.3-128.6 54.3 38.8 119.4 59.5 186.2 59.2 19 0 34.7-15.7 34.7-34.7v-66.2c131.6 91.8 208.3 229.1 208.3 378.7 0 268-249.2 486.1-555.6 486.1z"
+    );
+
     pathFive.setAttribute("class", "line-draw");
-    
+
     svg.appendChild(pathFive);
-   
+
     let tomatos = document.getElementById("pomodoro-sessions");
     let lastElm = tomatos.lastElementChild;
     //let mySVG = document.getElementById("mySVG");
     let li = document.createElement("li");
-    if(sessionLabel == "Work" && timeSpentInCurrentSession > 2){
+    if (sessionLabel == "Work" && timeSpentInCurrentSession > 1800) {
+      if (!lastElm || lastElm.className == "full-tomato") {
+        li.setAttribute("class", "half-tomato");
+        li.appendChild(svg);
+        tomatos.appendChild(li);
+      } else if (lastElm.className == "half-tomato") {
+        lastElm.setAttribute("class", "full-tomato");
+        let mySVG = lastElm.lastElementChild;
 
- if (!lastElm || lastElm.className == "full-tomato"){
-     li.setAttribute("class", "half-tomato");
-      li.appendChild(svg);
-      tomatos.appendChild(li);
-     
+        let element = mySVG.getElementById("pathNumFour");
+        element.setAttributeNS(null, "class", "tomato-fill");
+        lastElm.setAttribute("class", "full-tomato");
+
+        console.log("full-tomato");
+      } else {
+        console.log("nope");
+      }
     }
-    else if (lastElm.className == "half-tomato"){
-      lastElm.setAttribute("class", "full-tomato");
-      let mySVG = lastElm.lastElementChild;
-      
-      let element = mySVG.getElementById("pathNumFour");
-      element.setAttributeNS(null, 'class', "tomato-fill");
-      lastElm.setAttribute("class", "full-tomato");
-      
-      
-      console.log("full-tomato");
-    }
-else{console.log("nope");}
-    
 
-
-
-
-
-    }
-  
     /*let elapsedTime = parseInt(timeSpentInCurrentSession / 60);
     elapsedTime = elapsedTime > 0 ? elapsedTime : "< 1";
 
     const text = document.createTextNode(
       `${sessionLabel} : ${elapsedTime} min`
-    );*/
-    const text = document.createTextNode(
-      timeSpentInCurrentSession
     );
+    const text = document.createTextNode(timeSpentInCurrentSession);
     p.appendChild(text);
-    WorkSessionStatus.appendChild(p);
-   
-      
-    
-    
- 
-
+    WorkSessionStatus.appendChild(p);*/
   };
 
   let ourObserver = new MutationObserver((mutations) => {
@@ -425,7 +481,7 @@ else{console.log("nope");}
     attributes: true,
   });
 
-   /*const updateProgress = function updateProgress() {
+  /*const updateProgress = function updateProgress() {
     let tomatos = document.getElementById("pomodoro-sessions");
     let lastElm = tomatos.lastElementChild;
     let deleteButton = document.getElementById("#slide-in");
@@ -440,7 +496,6 @@ let fullTomatoURL = "url('" + 'http://www.sandboxmulti.com/wp-content/uploads/20
     halfTomato.style.backgroundImage = halfTomatoURL; 
     let fullTomato = document.querySelector("full-tomato");
     fullTomato.style.backgroundImage = fullTomatoURL; */
-  
 
   const displayCurrentTimeLeftInSession = () => {
     const secondsLeft = currentTimeLeftInSession;
@@ -485,5 +540,4 @@ let fullTomatoURL = "url('" + 'http://www.sandboxmulti.com/wp-content/uploads/20
       type === "Work" ? workSessionDuration : breakSessionDuration;
     return (timeSpentInCurrentSession / sessionDuration) * 10;
   };
-
 });

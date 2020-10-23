@@ -6,13 +6,11 @@
 
   <body>
     <nav class="navbar">
-      <label class="navbar-toggle" id="js-navbar-toggle" for="chkToggle">
-              <i class="fa fa-bars"></i>
-          </label>
-      
-      <input type="checkbox" id="chkToggle"></input>
+      <ul class="left-nav">
+        <a href="/settings"><i class="fas fa-cog"></i></a>
+      </ul>
+
       <ul class="main-nav" id="js-menu">
-       
         <li>
           <a href="/" class="nav-links">Timer</a>
         </li>
@@ -21,78 +19,65 @@
         </li>
       </ul>
     </nav>
- <div class="wrapper">
+    <div class="wrapper">
+      <div id="archive-container">
+        <h3>My Archive!!</h3>
 
-  <div id="archive-container">
-    <h3>My Archive!! </h3>
-    
-    <ul id = "list" class = "archive-list">
+        <ul id="list" class="archive-list">
+          <% for ( let tomato of tomatos ) { %>
+          <li class="<%= tomato.month %>"><%= tomato.date %></li>
+          <% } %>
+        </ul>
+        <div class="post-archive">
+          <ul class="December-archive">
+            <h3 class="dec">December</h3>
+          </ul>
 
-      
-      <% for ( let tomato of tomatos ) { %>
-        <li class="<%= tomato.month %>">
-          
-          <%= tomato.date %>
-            
-        </li>
-      <% } %>
-     
-    </ul>
-    <div class="post-archive">
-      
-      <ul class="December-archive">
-<h3 class="dec">December</h3>
-</ul>
+          <ul id="November-archive">
+            <h3 class="nov">November</h3>
+          </ul>
 
-      <ul id="November-archive">
-<h3 class="nov">November</h3>
-</ul>
-      
-<ul id="October-archive">
-<h3 class="oct">October</h3>
-</ul>
-      
-      <ul id="September-archive">
-<h3>September</h3>
-</ul>
+          <ul id="October-archive">
+            <h3 class="oct">October</h3>
+          </ul>
 
-      <ul id="August-archive">
-<h3>August</h3>
-</ul>
+          <ul id="September-archive">
+            <h3>September</h3>
+          </ul>
 
-      <ul id="July-archive">
-<h3>July</h3>
-</ul>
+          <ul id="August-archive">
+            <h3>August</h3>
+          </ul>
 
-      <ul id="June-archive">
-<h3>June</h3>
-</ul>
+          <ul id="July-archive">
+            <h3>July</h3>
+          </ul>
 
-      <ul id="May-archive">
-<h3>May</h3>
-</ul>
+          <ul id="June-archive">
+            <h3>June</h3>
+          </ul>
 
-      <ul id="April-archive">
-<h3>April</h3>
-</ul>
+          <ul id="May-archive">
+            <h3>May</h3>
+          </ul>
 
-      <ul id="March-archive">
-<h3>March</h3>
-</ul>
+          <ul id="April-archive">
+            <h3>April</h3>
+          </ul>
 
-      <ul id="February-archive">
-<h3>February</h3>
-</ul>
+          <ul id="March-archive">
+            <h3>March</h3>
+          </ul>
 
-      <ul id="January-archive">
-<h3>January</h3>
-</ul>
+          <ul id="February-archive">
+            <h3>February</h3>
+          </ul>
 
+          <ul id="January-archive">
+            <h3>January</h3>
+          </ul>
+        </div>
+      </div>
     </div>
-   
-  </div>
-
- </div>
-   
   </body>
 </html>

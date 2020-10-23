@@ -80,19 +80,28 @@ function deleteTomatos(e){
     ];
     const d = new Date();
     let currentMonth = monthNames[d.getMonth()];
+    var today = new Date();
+    var dd = today.getDate();
+
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+    today = mm + "-" + dd + "-" + yyyy;
     // Clean data for demo
+    /*
     await Promise.all(
       Object.entries(conn.models).map(([k, m]) => m.deleteMany())
-    );
-    /*  
-    let x = await Client.find({ time: '30' });
-    if(x.length > 0){console.log("Collection length is greater than 0")}
-    else{console.log("Collection length is NOT greater than 0")}
-  */
+    );*/
 
     await Tomato.insertMany([
-      { name: "half-tomato", month: "July", date: new Date().toISOString() },
-      { name: "half-tomato", month: "August", date: new Date().toISOString() },
+      { name: "half-tomato", month: "October", date: today },
+      { name: "half-tomato", month: "August", date: "08-20-2020" },
       { name: "half-tomato", month: "August", date: new Date().toISOString() },
       {
         name: "half-tomato",
@@ -134,7 +143,7 @@ express()
 
   .get("/", (req, res) => res.render("pages/index"))
   .get("/archive", (req, res) => res.render("pages/archive"))
-
+  .get("/settings", (req, res) => res.render("pages/settings"))
   .get("/cool", (req, res) => res.send(cool()))
   .get("/times", (req, res) => res.send(showTimes()))
   .get("/db", async (req, res) => {

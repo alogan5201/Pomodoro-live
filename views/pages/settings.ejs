@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/settingsheader.ejs %>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <ul class="left-nav">
+        <a href="/settings"> <i class="fas fa-cog"></i></a>
+      </ul>
+
+      <ul class="main-nav" id="js-menu">
+        <li>
+          <a href="/" class="nav-links">Timer</a>
+        </li>
+        <li>
+          <a href="/archive" class="nav-links">Archive</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="wrapper">
+      <div id="pomodoro-info">
+        <h3>Pomodoro Sessions!!!</h3>
+        <ul class="tomatos-block" id="pomodoro-sessions"></ul>
+        <form action="/deleteAll" method="POST">
+          <div id="slide-in" class="box hide">
+            <button
+              class="dlt-button touch delete"
+              id="myButton"
+              type="submit"
+              value="clicked"
+            ></button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      window.onload = (event) => {
+        let deleteButton = document.querySelector("#slide-in");
+        deleteButton.classList.add("show");
+      };
+    </script>
+  </body>
+</html>
