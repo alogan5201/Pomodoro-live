@@ -13,20 +13,20 @@ body {
 
   text-align: center;
 }
-/*NavBar*/ 
+/*NavBar*/
 .navbar {
-  padding-top: .5em;
-	padding-bottom: .5em;
-	border: 1px solid #a2a2a2;
-	background-color: #f4f4f4;
-	-webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-	box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: 1px solid #a2a2a2;
+  background-color: #f4f4f4;
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
   border-radius: 5px;
-  font-family: 'Montserrat', sans-serif;
-	line-height: 1.6;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.6;
 }
 
 .main-nav {
@@ -45,7 +45,7 @@ body {
   margin: 15px auto;
   text-transform: uppercase;
   line-height: 1.6;
-  font-weight:300;
+  font-weight: 300;
 }
 
 .logo {
@@ -114,69 +114,82 @@ body {
   }
 }
 
-
-
-
 /*SVG*/
-.a{fill:#4caf50}.b{fill:#ff3d00}
-  .tomato-fill {
-    animation-duration: 1s;
+.a {
+  fill: #4caf50;
+}
+.b {
+  fill: #ff3d00;
+}
+.tomato-fill {
+  animation-duration: 1s;
   animation-delay: 0s;
-  
+
   animation-direction: alternate-reverse;
   animation-timing-function: ease;
   animation-fill-mode: both;
   animation-name: changeColor;
-  }
- 
- 
-@keyframes changeColor {
-	0% {
-		fill: red;
-	}
-	100% {
-		fill: white;
-	}
 }
 
+@keyframes changeColor {
+  0% {
+    fill: red;
+  }
+  100% {
+    fill: white;
+  }
+}
 
-.red{fill:red;}
-.white{fill:#fff;}
+.red {
+  fill: red;
+}
+.white {
+  fill: #fff;
+}
 .line-draw {
-  fill:white;
-  stroke:black;
-  stroke-width: 10;  
+  fill: white;
+  stroke: black;
+  stroke-width: 10;
   stroke-dasharray: 9841.783203125;
   stroke-dashoffset: 9841.783203125;
   animation: dash 2s linear;
   animation-duration: 2s;
   animation-delay: 0s;
   animation-timing-function: ease;
-  animation-fill-mode: both;}
+  animation-fill-mode: both;
+}
 
-@keyframes dash {to {stroke-dashoffset: 0;}0%{fill: white;}100%{fill: black;}}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+  0% {
+    fill: white;
+  }
+  100% {
+    fill: black;
+  }
+}
 .rect-two::after {
   animation-duration: 2s;
-animation-delay: 1s;
+  animation-delay: 1s;
 
-animation-direction: alternate-reverse;
-animation-timing-function: ease;
-animation-fill-mode: both;
-animation-name: changemyColor;
-
-
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-name: changemyColor;
 }
 
 @keyframes changemyColor {
-0% {
-  fill: black;
-}
-100% {
-  fill: white;
-}
+  0% {
+    fill: black;
+  }
+  100% {
+    fill: white;
+  }
 }
 .tomatos {
-  display:none;
+  display: none;
   background-color: white;
   border: solid black 2px;
   width: 60vw;
@@ -197,51 +210,58 @@ animation-name: changemyColor;
   );
   padding-bottom: 200px;
 }
-#archive-container{
-  display:flex;
-  
+#archive-container {
+  display: flex;
+
   width: 100vw;
-  height:100vh;
- 
+  height: 100vh;
+
   justify-content: center;
-  align-items:center;
+  align-items: center;
   text-align: center;
 
   flex-wrap: wrap;
 }
-.archive-list{
+.archive-list {
   background-color: white;
   border: solid black 2px;
   width: 60vw;
   flex: 0 0 100%;
 }
-.post-archive{
+.post-archive {
   background-color: white;
   border: solid black 2px;
   width: 60vw;
+}
+.post-archive h3 {
+  text-align: center;
 }
 #pomodoro-info {
   background-color: white;
   border: solid black 2px;
   width: 40vw;
   margin-top: 10px;
-  margin-right:20px;
+  margin-right: 20px;
 }
 #work-session-status {
-  display:flex;
+  display: flex;
   background-color: white;
   border: solid black 2px;
   width: 30vw;
   margin-top: 10px;
-  margin-right:20px;
+  margin-right: 20px;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   text-align: center;
   height: auto;
   flex-wrap: wrap;
 }
-#work-session-status p { flex: 0 0 100%;}
-#work-session-status button{flex: 0 0 100%}
+#work-session-status p {
+  flex: 0 0 100%;
+}
+#work-session-status button {
+  flex: 0 0 100%;
+}
 #pomodoro-container {
   display: flex;
   flex-direction: column;
@@ -254,7 +274,7 @@ animation-name: changemyColor;
   margin-left: 20px;
 }
 #pomodoro-timer {
-  margin-top:40px;
+  margin-top: 40px;
   max-width: 80vw;
 }
 #pomodoro-clock {
@@ -307,17 +327,20 @@ animation-name: changemyColor;
   flex-direction: row;
   justify-content: space-around;
   width: 120px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 #pomodoro-clock-actions button {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  margin-left:23px;
+  margin-left: 23px;
 }
 
 .hidden {
+  display: none;
+}
+.December-archive:empty {
   display: none;
 }
 
@@ -335,80 +358,74 @@ animation-name: changemyColor;
 }
 
 .half-tomato {
-  
   /*background-image: url("half-tomato.svg");*/
   background-repeat: no-repeat;
- 
-  background-size: 50px 50px;
 
+  background-size: 50px 50px;
 }
-.half-tomato-bg{background-image: url("half-tomato.svg");
+.half-tomato-bg {
+  background-image: url("half-tomato.svg");
   background-repeat: no-repeat;
- 
-  background-size: 50px 50px;
 
+  background-size: 50px 50px;
 }
 .full-tomato {
- 
- /* background-image: url("full-tomato.svg");*/
+  /* background-image: url("full-tomato.svg");*/
   background-repeat: no-repeat;
-  
+
   background-size: 50px 50px;
 }
-.full-tomato-bg{
+.full-tomato-bg {
   background-image: url("full-tomato.svg");
   background-repeat: no-repeat;
- 
+
   background-size: 50px 50px;
 }
 .tomato-fill {
   animation-duration: 1s;
-animation-delay: 0s;
+  animation-delay: 0s;
 
-animation-direction: alternate-reverse;
-animation-timing-function: ease;
-animation-fill-mode: both;
-animation-name: changeColor;
-
-
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  animation-name: changeColor;
 }
-
 
 @keyframes changeColor {
-0% {
+  0% {
+    fill: red;
+  }
+  100% {
+    fill: white;
+  }
+}
+.red {
   fill: red;
 }
-100% {
-  fill: white;
+.white {
+  fill: #fff;
 }
-}
-.red{fill:red;}
-.white{fill:#fff;}
 .path {
-   
   stroke-dasharray: 9841.783203125;
   stroke-dashoffset: 9841.783203125;
   animation: dash 2s linear;
   animation-duration: 2s;
   animation-delay: 0s;
-  
-  
+
   animation-timing-function: ease;
   animation-fill-mode: both;
-  
 }
 
 @keyframes dash {
- 
   to {
     stroke-dashoffset: 0;
   }
   0% {
-  fill: white;
-}
-100% {
-  fill: black;
-}
+    fill: white;
+  }
+  100% {
+    fill: black;
+  }
 }
 li {
   list-style: none;
@@ -493,55 +510,52 @@ li {
 .o-play-btn--playing .o-play-btn__mask:after {
   transform: rotate(0);
 }
-#pomodoro-info h3{font-family: 'Lato', sans-serif;}
+#pomodoro-info h3 {
+  font-family: "Lato", sans-serif;
+}
 
-#pomodoro-sessions svg {max-width:70px }
+#pomodoro-sessions svg {
+  max-width: 70px;
+}
 
 .dlt-button {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-size: 16px;
   font-weight: 400;
   display: inline-block;
-  color: #FFF;
-  
+  color: #fff;
+
   text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.4);
 }
 
-
-
- .touch:hover {
+.touch:hover {
   transform: scale(1.02);
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), inset 0 0 0 99999px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 99999px rgba(0, 0, 0, 0.2);
 }
 
-
-
-
 .touch {
-  transition: ease-in-out .2s;
+  transition: ease-in-out 0.2s;
   line-height: 25px;
   width: 25px;
   padding: 0px;
   text-align: center;
 }
 
- .delete:before {
+.delete:before {
   font-family: FontAwesome;
   display: inline-block;
   font-size: 1rem;
   background: none;
-  color: #FFF;
+  color: #fff;
 }
-
-
 
 .touch.delete:before {
   width: 100%;
   text-align: center;
-  
 }
 
- .inlineIcon.delete {
+.inlineIcon.delete {
   background: transparent;
 }
 
@@ -550,10 +564,6 @@ li {
   font-size: 32px;
   padding: 4px 0px;
 }
-
-
-
-
 
 .delete {
   background: #c0392b;
@@ -566,49 +576,40 @@ li {
   color: #c0392b;
 }
 
-.fadeIn{
-  
-  
+.fadeIn {
   animation: fade-in-scale-down 2s ease-out 1;
   -webkit-animation: fade-in-scale-down 2s ease-in-out 1;
-  -moz-animation:    fade-in-scale-down 2s ease-in-out 1;
-  -o-animation:      fade-in-scale-down 2s ease-in-out 1;
+  -moz-animation: fade-in-scale-down 2s ease-in-out 1;
+  -o-animation: fade-in-scale-down 2s ease-in-out 1;
 }
 
-@keyframes fade-in-scale-down{
-  0%{
-    opacity:0;
-    -webkit-transform:scale(1.1);
-    -ms-transform:scale(1.1);
-    transform:scale(1.1)
+@keyframes fade-in-scale-down {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
   }
-  
-  100%{
-    opacity:1;
-    -webkit-transform:scale(1);
-    -ms-transform:scale(1);
-    transform:scale(1);
+
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
   }
 }
-
-
 
 .box {
-
-  background:white;
+  background: white;
 }
-#slide-in{
-  float:right;
- width:0px;
+#slide-in {
+  float: right;
+  width: 0px;
   opacity: 0;
-  transition: all .75s ease;
+  transition: all 0.75s ease;
 }
 
 #slide-in.show {
   opacity: 1;
-  width:25px;
-
+  width: 25px;
 }
-
-
-
