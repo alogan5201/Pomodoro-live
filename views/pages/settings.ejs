@@ -19,27 +19,25 @@
         </li>
       </ul>
     </nav>
+
     <div class="wrapper">
       <div id="pomodoro-info">
         <h3>Pomodoro Sessions!!!</h3>
-        <ul class="tomatos-block" id="pomodoro-sessions"></ul>
-        <form action="/deleteAll" method="POST">
-          <div id="slide-in" class="box hide">
-            <button
-              class="dlt-button touch delete"
-              id="myButton"
-              type="submit"
-              value="clicked"
-            ></button>
-          </div>
-        </form>
+        <ul class="tomatos-block" id="pomodoro-sessions">
+          <form action="/deleteAll" method="POST">
+            <div id="delete">
+              <button
+                id="myButton"
+                type="submit"
+                value="clicked"
+                onclick="return confirm('Are you sure?')"
+              >
+                DELETE
+              </button>
+            </div>
+          </form>
+        </ul>
       </div>
     </div>
-    <script>
-      window.onload = (event) => {
-        let deleteButton = document.querySelector("#slide-in");
-        deleteButton.classList.add("show");
-      };
-    </script>
   </body>
 </html>
