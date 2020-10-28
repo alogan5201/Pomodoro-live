@@ -4,40 +4,284 @@
     <% include ../partials/settingsheader.ejs %>
   </head>
 
-  <body>
-    <nav class="navbar">
-      <ul class="left-nav">
-        <a href="/settings"> <i class="fas fa-cog"></i></a>
-      </ul>
-
-      <ul class="main-nav" id="js-menu">
-        <li>
-          <a href="/" class="nav-links">Timer</a>
-        </li>
-        <li>
-          <a href="/archive" class="nav-links">Archive</a>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="wrapper">
-      <div id="pomodoro-info">
-        <h3>Pomodoro Sessions!!!</h3>
-        <ul class="tomatos-block" id="pomodoro-sessions">
-          <form action="/deleteAll" method="POST">
-            <div id="delete">
-              <button
-                id="myButton"
-                type="submit"
-                value="clicked"
-                onclick="return confirm('Are you sure?')"
-              >
-                DELETE
-              </button>
+  <body class="is-preload">
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+      <!-- Header -->
+      <header id="header" class="entry">
+        <a href="index.html">
+          <div class="mug-coffee">
+            <div class="smoke-container">
+              <svg width="45px" height="39px" viewbox="0 0 31 73">
+                <g
+                  stroke="none"
+                  stroke-width="1"
+                  fill="none"
+                  fill-rule="evenodd"
+                >
+                  <g
+                    class="smokes"
+                    transform="translate(2.000000, 2.000000)"
+                    stroke="#BEBEBE"
+                    stroke-width="5"
+                  >
+                    <g class="smoke-1">
+                      <path
+                        id="Shape1"
+                        d="M0.5,8.8817842e-16 C0.5,8.8817842e-16 3.5,5.875 3.5,11.75 C3.5,17.625 0.5,17.625 0.5,23.5 C0.5,29.375 3.5,29.375 3.5,35.25 C3.5,41.125 0.5,41.125 0.5,47"
+                      ></path>
+                    </g>
+                    <g class="smoke-2">
+                      <path
+                        id="Shape2"
+                        d="M0.5,8.8817842e-16 C0.5,8.8817842e-16 3.5,5.875 3.5,11.75 C3.5,17.625 0.5,17.625 0.5,23.5 C0.5,29.375 3.5,29.375 3.5,35.25 C3.5,41.125 0.5,41.125 0.5,47"
+                      ></path>
+                    </g>
+                    <g class="smoke-3">
+                      <path
+                        id="Shape3"
+                        d="M0.5,8.8817842e-16 C0.5,8.8817842e-16 3.5,5.875 3.5,11.75 C3.5,17.625 0.5,17.625 0.5,23.5 C0.5,29.375 3.5,29.375 3.5,35.25 C3.5,41.125 0.5,41.125 0.5,47"
+                      ></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
             </div>
+            <svg
+              class="mymug"
+              width="50px"
+              height="50px"
+              viewBox="0 0 534 534"
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M430.417 210.417v102.916c0 30.834-25 56.25-56.25 56.25H140.833c-30.833 0-55.833-25-55.833-56.25V210.417c0 86.25 345.417-76.25 345.417 0z"
+                fill="#dbdbdd"
+              />
+              <path
+                d="M140.833 388.333h233.334c41.25 0 74.583-33.333 74.583-75 51.667 0 84.167-46.25 84.167-102.916 0-56.667-32.5-75-84.167-75V107.5H66.25v205.833c0 41.25 33.333 75 74.583 75zM449.167 163.75c36.25 0 55.833 5.417 55.833 46.667s-20 75-55.833 75V163.75zm-355-27.917h326.666V313.75c0 30.833-15.833 46.667-46.666 46.667H140.833c-30.833 0-46.666-15.834-46.666-46.667V135.833zM486.25 397.5H19.583a18.672 18.672 0 00-18.75 18.75c0 10.417 8.334 9.167 18.75 9.167h467.084c10.416 0 18.75.833 18.75-9.167-.417-10.417-8.75-18.75-19.167-18.75z"
+                fill="#fff"
+                fill-rule="nonzero"
+                stroke="#575757"
+                stroke-width=".63"
+              />
+            </svg>
+            <!--  <img
+                class="mymug"
+                src="assets/css/images/coffeewhite.svg"
+                alt="coffee"
+			  /> -->
+          </div>
+          <h1>PomoProgress</h1>
+        </a>
+
+        <nav>
+          <a href="#menu">Menu</a>
+        </nav>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <div class="inner">
+          <h2>Menu</h2>
+          <ul class="links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="generic.html">Generic</a></li>
+            <li><a href="elements.html">Elements</a></li>
+            <li><a href="#">Log In</a></li>
+            <li><a href="#">Sign Up</a></li>
+          </ul>
+          <a href="#" class="close">Close</a>
+        </div>
+      </nav>
+
+      <!-- Banner -->
+      <section id="banner">
+        <div>
+          <div class="inner">
+            <div class="logo"><i class="archive-icon fas fa-sitemap"></i></div>
+
+            <h2>Archive</h2>
+            <h3 class="major">October</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Wrapper -->
+      <section id="wrapper">
+        <!-- One -->
+        <section id="one">
+          <div class="inner">
+            <div class="content">
+              <h2 class="major">Magna arcu feugiat</h2>
+              <p>
+                Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras
+                turpis ante, nullam sit amet turpis non, sollicitudin posuere
+                urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim
+                dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla
+                cursus.
+              </p>
+              <a href="#" class="special">Learn more</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Two -->
+        <section style="background-color: black" id="two">
+          <div class="inner">
+            <div class="content">
+              <h2 class="major">Tempus adipiscing</h2>
+              <p>
+                Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras
+                turpis ante, nullam sit amet turpis non, sollicitudin posuere
+                urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim
+                dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla
+                cursus.
+              </p>
+              <a href="#" class="special">Learn more</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Three -->
+        <section id="three" class="wrapper spotlight style3">
+          <div class="inner">
+            <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
+            <div class="content">
+              <h2 class="major">Nullam dignissim</h2>
+              <p>
+                Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras
+                turpis ante, nullam sit amet turpis non, sollicitudin posuere
+                urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim
+                dapibus. Nullam ultrices, neque et faucibus viverra, ex nulla
+                cursus.
+              </p>
+              <a href="#" class="special">Learn more</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Four -->
+        <section id="four" class="wrapper alt style1">
+          <div class="inner">
+            <h2 class="major">Vitae phasellus</h2>
+            <p>
+              Cras mattis ante fermentum, malesuada neque vitae, eleifend erat.
+              Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis
+              egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus
+              in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.
+            </p>
+            <section class="features">
+              <article>
+                <a href="#" class="image"
+                  ><img src="images/pic04.jpg" alt=""
+                /></a>
+                <h3 class="major">Sed feugiat lorem</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id
+                  nulla dignissim dapibus ultrices.
+                </p>
+                <a href="#" class="special">Learn more</a>
+              </article>
+              <article>
+                <a href="#" class="image"
+                  ><img src="images/pic05.jpg" alt=""
+                /></a>
+                <h3 class="major">Nisl placerat</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id
+                  nulla dignissim dapibus ultrices.
+                </p>
+                <a href="#" class="special">Learn more</a>
+              </article>
+              <article>
+                <a href="#" class="image"
+                  ><img src="images/pic06.jpg" alt=""
+                /></a>
+                <h3 class="major">Ante fermentum</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id
+                  nulla dignissim dapibus ultrices.
+                </p>
+                <a href="#" class="special">Learn more</a>
+              </article>
+              <article>
+                <a href="#" class="image"
+                  ><img src="images/pic07.jpg" alt=""
+                /></a>
+                <h3 class="major">Fusce consequat</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id
+                  nulla dignissim dapibus ultrices.
+                </p>
+                <a href="#" class="special">Learn more</a>
+              </article>
+            </section>
+            <ul class="actions">
+              <li><a href="#" class="button">Browse All</a></li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <!-- Footer -->
+      <section id="footer">
+        <div class="inner">
+          <h2 class="major">Get in touch</h2>
+          <p>
+            Cras mattis ante fermentum, malesuada neque vitae, eleifend erat.
+            Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis
+            egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus
+            in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.
+          </p>
+          <form method="post" action="#">
+            <div class="fields">
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" rows="4"></textarea>
+              </div>
+            </div>
+            <ul class="actions">
+              <li><input type="submit" value="Send Message" /></li>
+            </ul>
           </form>
-        </ul>
-      </div>
+          <ul class="contact">
+            <li class="icon solid fa-home">
+              Untitled Inc<br />
+              1234 Somewhere Road Suite #2894<br />
+              Nashville, TN 00000-0000
+            </li>
+            <li class="icon solid fa-phone">(000) 000-0000</li>
+            <li class="icon solid fa-envelope">
+              <a href="#">information@untitled.tld</a>
+            </li>
+            <li class="icon brands fa-twitter">
+              <a href="#">twitter.com/untitled-tld</a>
+            </li>
+            <li class="icon brands fa-facebook-f">
+              <a href="#">facebook.com/untitled-tld</a>
+            </li>
+            <li class="icon brands fa-instagram">
+              <a href="#">instagram.com/untitled-tld</a>
+            </li>
+          </ul>
+          <ul class="copyright">
+            <li>&copy; Untitled Inc. All rights reserved.</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+          </ul>
+        </div>
+      </section>
     </div>
+
+    <% include ../partials/footer.ejs %>
   </body>
 </html>
