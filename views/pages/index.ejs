@@ -6,120 +6,216 @@
 
   <body>
     
-    <nav class="navbar">
-      <ul class="left-nav">
-         <a href="/settings"> <i class="fas fa-cog"></i></a></ul>
-               
-           
-       
-      
-       <ul class="main-nav" id="js-menu">
-        
-         <li>
-           <a href="/" class="nav-links">Timer</a>
-         </li>
-         <li>
-           <a href="/archive" class="nav-links">Archive</a>
-         </li>
-       </ul>
-     </nav>
-    <div class="wrapper">
-      <audio id="myAudio" src="notification.mp3" preload="auto">
-        
-        
-        
-      </audio>  
-      <div id="pomodoro-container">
-           
-          <div id="pomodoro-clock">
-              <div id="pomodoro-timer"></div>
-              <div>
-                <input type="text" id="pomodoro-clock-task" placeholder="Enter your task..." />
-              </div>
-             
-              <div id="pomodoro-clock-actions">
-                <button  class = "o-play-btn">
-                    <i class="o-play-btn__icon" id="play-icon"></i>
-                    <!-- <i class="fas fa-pause hidden" id="pause-icon"></i> -->
-                    <div class="o-play-btn__mask"></div>
-                  </button>
-                  <form id ="rumiForm" action="/tomatos" method="POST">
-                   
-                    <div>
-                      <button id="pomodoro-stop" type="submit" class="hidden" value="clicked">
-                        <i class="fas fa-stop"></i>
-                      </button>
-                    </div>
-                  </form>
-              </div>
-              <!-- new -->
-              <div id="pomodoro-clock-title">
+    
+    <!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/archiveheader.ejs %>
+  </head>
+
+  <body>
+    <div id="page-wrapper">
+      <!-- Header -->
+      <header id="header" class="entry">
+        <a href="/">
+          <div class="mug-coffee">
+            <div class="smoke-container">
+              <svg width="45px" height="39px" viewbox="0 0 31 73">
+                <g
+                  stroke="none"
+                  stroke-width="1"
+                  fill="none"
+                  fill-rule="evenodd"
+                >
+                  <g
+                    class="smokes"
+                    transform="translate(2.000000, 2.000000)"
+                    stroke="#BEBEBE"
+                    stroke-width="5"
+                  >
+                    <g class="smoke-1">
+                      <path
+                        id="Shape1"
+                        d="M0.5,8.8817842e-16 C0.5,8.8817842e-16 3.5,5.875 3.5,11.75 C3.5,17.625 0.5,17.625 0.5,23.5 C0.5,29.375 3.5,29.375 3.5,35.25 C3.5,41.125 0.5,41.125 0.5,47"
+                      ></path>
+                    </g>
+                    <g class="smoke-2">
+                      <path
+                        id="Shape2"
+                        d="M0.5,8.8817842e-16 C0.5,8.8817842e-16 3.5,5.875 3.5,11.75 C3.5,17.625 0.5,17.625 0.5,23.5 C0.5,29.375 3.5,29.375 3.5,35.25 C3.5,41.125 0.5,41.125 0.5,47"
+                      ></path>
+                    </g>
+                    <g class="smoke-3">
+                      <path
+                        id="Shape3"
+                        d="M0.5,8.8817842e-16 C0.5,8.8817842e-16 3.5,5.875 3.5,11.75 C3.5,17.625 0.5,17.625 0.5,23.5 C0.5,29.375 3.5,29.375 3.5,35.25 C3.5,41.125 0.5,41.125 0.5,47"
+                      ></path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <svg
+              class="mymug"
+              width="50px"
+              height="50px"
+              viewBox="0 0 534 534"
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M430.417 210.417v102.916c0 30.834-25 56.25-56.25 56.25H140.833c-30.833 0-55.833-25-55.833-56.25V210.417c0 86.25 345.417-76.25 345.417 0z"
+                fill="#dbdbdd"
+              />
+              <path
+                d="M140.833 388.333h233.334c41.25 0 74.583-33.333 74.583-75 51.667 0 84.167-46.25 84.167-102.916 0-56.667-32.5-75-84.167-75V107.5H66.25v205.833c0 41.25 33.333 75 74.583 75zM449.167 163.75c36.25 0 55.833 5.417 55.833 46.667s-20 75-55.833 75V163.75zm-355-27.917h326.666V313.75c0 30.833-15.833 46.667-46.666 46.667H140.833c-30.833 0-46.666-15.834-46.666-46.667V135.833zM486.25 397.5H19.583a18.672 18.672 0 00-18.75 18.75c0 10.417 8.334 9.167 18.75 9.167h467.084c10.416 0 18.75.833 18.75-9.167-.417-10.417-8.75-18.75-19.167-18.75z"
+                fill="#fff"
+                fill-rule="nonzero"
+                stroke="#575757"
+                stroke-width=".63"
+              />
+            </svg>
+            <!--  <img
+                class="mymug"
+                src="assets/css/images/coffeewhite.svg"
+                alt="coffee"
+			  /> -->
+          </div>
+          <h1>PomoProgress</h1>
+        </a>
+
+        <nav>
+          <a href="#menu">Menu</a>
+        </nav>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <div class="inner">
+          <h2>Menu</h2>
+          <ul class="links">
+            <li><a href="/">Timer</a></li>
+            <li><a href="/archive">Archive</a></li>
+            <li><a href="/settings">Settings</a></li>
+            <li><a href="#">Log In</a></li>
+            <li><a href="#">Sign Up</a></li>
+          </ul>
+          <a href="#" class="close">Close</a>
+        </div>
+      </nav>
+
+      <!-- Banner -->
+      <section id="banner">
+        <div>
+          <div class="inner">
+            <div class="logo"><i class="archive-icon fas fa-sitemap"></i></div>
+
+            <h2>Archive</h2>
+            <div class="wrapper">
+              <audio id="myAudio" src="notification.mp3" preload="auto">
                 
-              </div>
-              <div id="pomodoro-clock-actions">
-                <div class="pomodoro-input">
-                  <label>Work Duration</label>
-                  <input name="input-work-duration" id="input-work-duration" type="number" />
-                </div>
-                <div class="pomodoro-input">
-                  <label>Break Duration</label>
-                  <input name="input-break-duration" id="input-break-duration" type="number" />
-                </div>
-              </div>
-              <div id = "work-session-status">
-                <p class="time-left">
-
-                </p> <br>
-                <button>TEST</button>
-              </div>
-              <div id="pomodoro-info">
-                <h3>Pomodoro Sessions!!! </h3>
-                <ul class = "tomatos-block" id="pomodoro-sessions">
-    
-                  
-    
-                 
-                </ul>
-                <form action="/deleteAll" method="POST">
-                  
-                  <div id ="slide-in" class="box hide">
-                    <button class="dlt-button touch delete" id="myButton" type="submit"  value="clicked">
-                      
-                    </button>
-                  </div>
-                </form>
-              </div>
-              
-            <div>
-
-              
-<div>
-
-  <ul class="tomatos">
-    <% for ( let tomato of tomatos ) { %>
-      <li class="tomato">
-        <span><%= tomato.name %>
-        <span><%= tomato.month %>
-          <span id="date"><%= tomato.date %>
-      </li>
-    <% } %>
-  
-  </ul>
-</div>
-
-
-    
-    
-  </div>
-  </div>
-  
+                
+                
+              </audio>  
+              <div id="pomodoro-container">
+                   
+                  <div id="pomodoro-clock">
+                      <div id="pomodoro-timer"></div>
+                      <div>
+                        <input type="text" id="pomodoro-clock-task" placeholder="Enter your task..." />
+                      </div>
+                     
+                      <div id="pomodoro-clock-actions">
+                        <button  class = "o-play-btn">
+                            <i class="o-play-btn__icon" id="play-icon"></i>
+                            <!-- <i class="fas fa-pause hidden" id="pause-icon"></i> -->
+                            <div class="o-play-btn__mask"></div>
+                          </button>
+                          <form id ="rumiForm" action="/tomatos" method="POST">
+                           
+                            <div>
+                              <button id="pomodoro-stop" type="submit" class="hidden" value="clicked">
+                                <i class="fas fa-stop"></i>
+                              </button>
+                            </div>
+                          </form>
+                      </div>
+                      <!-- new -->
+                      <div id="pomodoro-clock-title">
+                        
+                      </div>
+                      <div id="pomodoro-clock-actions">
+                        <div class="pomodoro-input">
+                          <label>Work Duration</label>
+                          <input name="input-work-duration" id="input-work-duration" type="number" />
+                        </div>
+                        <div class="pomodoro-input">
+                          <label>Break Duration</label>
+                          <input name="input-break-duration" id="input-break-duration" type="number" />
+                        </div>
+                      </div>
+                      <div id = "work-session-status">
+                        <p class="time-left">
           
+                        </p> <br>
+                        <button>TEST</button>
+                      </div>
+                      <div id="pomodoro-info">
+                        <h3>Pomodoro Sessions!!! </h3>
+                        <ul class = "tomatos-block" id="pomodoro-sessions">
+            
+                          
+            
+                         
+                        </ul>
+                        <form action="/deleteAll" method="POST">
+                          
+                          <div id ="slide-in" class="box hide">
+                            <button class="dlt-button touch delete" id="myButton" type="submit"  value="clicked">
+                              
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                      
+                    <div>
+          
+                      
+          <div>
+          
+          <ul class="tomatos">
+            <% for ( let tomato of tomatos ) { %>
+              <li class="tomato">
+                <span><%= tomato.name %>
+                <span><%= tomato.month %>
+                  <span id="date"><%= tomato.date %>
+              </li>
+            <% } %>
+          
+          </ul>
+          </div>
+          
+          
+            
             
           </div>
           </div>
-         <!-- <div class='test'><img src='./half-tomato-png.png' alt='test'></div> --> 
+          
+                  
+                    
+                  </div>
+                  </div>
+            
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- Wrapper -->
+    </div>
+   
+
+         <!-- <div class='test'><img src='./half-tomato-png.png' alt='test'></div> --> 
+        
       <script>
         
         function submitRumiForm(e) {
@@ -172,5 +268,6 @@ $('.o-play-btn').on('click', function(){
 
 //document.getElementById("myButton").addEventListener("click", submitRumiForm);
       </script>
+       <% include ../partials/footer.ejs %>
   </body>
 </html>
