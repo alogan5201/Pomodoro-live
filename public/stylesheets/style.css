@@ -215,6 +215,19 @@ body {
   );
   padding-bottom: 200px;
 }
+.timer-wrapper {
+  padding: 5em 0 9.75em 0;
+  background-color: #4686a0;
+
+  /*background-image: url("images/overlay2.png"), url("images/overlay3.svg"),
+	linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2);*/
+  background-image: url("images/overlay1.png"), url("images/overlay3.svg"),
+    linear-gradient(45deg, #9dc66b 5%, #4fa49a 30%, #4361c2);
+  background-position: top left, center center, center center;
+  background-size: auto, cover, cover;
+  overflow: hidden;
+  position: relative;
+}
 #archive-container {
   display: flex;
 
@@ -248,6 +261,8 @@ body {
   width: 40vw;
   margin-top: 10px;
   margin-right: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 #work-session-status {
   display: none;
@@ -292,6 +307,7 @@ body {
   margin-bottom: 40px;
   max-width: 300px;
   margin-top: 20px;
+  color: white;
 }
 
 #pomodoro-clock-circle {
@@ -315,37 +331,63 @@ body {
 
 #pomodoro-clock-task {
   display: inline-block;
-  margin-top: 10px;
+
   width: 200px;
   padding: 5px 10px;
   border: 1px solid lightgrey;
   border-radius: 3px;
-  margin-bottom: 30px;
+  margin: 2em auto;
 }
-
+#pomodoro-clock-actions .pomodoro-input input {
+  color: black;
+}
 #pomodoro-clock-title {
   margin-top: 20px;
   width: 200px;
 }
 
 #pomodoro-clock-actions {
-  margin-top: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   width: 120px;
   font-family: "Lato", sans-serif;
 }
 
 #pomodoro-clock-actions button {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  margin-left: 23px;
+  background-color: transparent;
+  border: none;
+
+  outline: none;
+  position: relative;
+  transition: all 1s;
+  width: 3.7rem;
+  height: 3.7rem;
+
+  margin-left: 1rem;
 }
 
-.hidden {
+#pomodoro-clock-actions .icon {
+  fill: rgba(0, 0, 0, 0.75);
+  stroke: rgba(0, 0, 0, 0.75);
+  stroke-width: 2px;
+  transition: all 0.2s;
+}
+#pomodoro-clock-actions .icon circle {
+  fill: #fff;
+}
+#pomodoro-clock-actions button.stop.active .icon {
+  fill: rgba(254, 29, 44, 0.9);
+  stroke: rgba(254, 29, 44, 0.9);
+}
+#pomodoro-clock-actions button.stop.active .icon-actual {
+  filter: drop-shadow(0px 0px 20px rgba(254, 29, 44, 0.5));
+}
+#pomodoro-clock-actions .hidden {
   display: none;
+}
+#pomodoro-clock-actions form {
+  margin-top: -10px;
 }
 .December-archive:empty {
   display: none;
@@ -440,12 +482,35 @@ li {
 .tomatos-block {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
-.progressbar-text {
-  color: black;
+#pomodoro-timer .progressbar-text {
+  color: white;
+  font-size: 1.4em;
 }
 
 /* Play/Pause BTN animation code-pen https://codepen.io/MarvinVK/pen/grJjzm*/
+
+#pomodoro-clock-actions .o-play-btn {
+  box-sizing: border-box;
+  width: 0;
+  height: 34px;
+  border-color: transparent transparent transparent #ffffff;
+  transition: 100ms all ease;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 17px 0 17px 30px;
+}
+#pomodoro-clock-actions .o-play-btn.o-play-btn--playing {
+  border-style: double;
+  border-width: 0px 0 0px 30px;
+}
+
+#pomodoro-clock-actions .o-play-btn:hover {
+  border-color: transparent transparent transparent #ffffff;
+}
+
+/*
 .o-play-btn {
   position: relative;
   background: transparent;
@@ -516,7 +581,7 @@ li {
 .o-play-btn--playing .o-play-btn__mask:before,
 .o-play-btn--playing .o-play-btn__mask:after {
   transform: rotate(0);
-}
+}*/
 #pomodoro-info h3 {
   font-family: "Lato", sans-serif;
 }
@@ -619,4 +684,30 @@ li {
 #slide-in.show {
   opacity: 1;
   width: 25px;
+}
+
+#settings-block {
+  display: flex;
+
+  margin: 0 auto;
+
+  justify-content: flex-start;
+
+  flex-wrap: wrap;
+}
+#delete-block {
+  display: flex;
+  flex-wrap: wrap;
+}
+#confirmation-block:before {
+  opacity: 0;
+}
+#confirmation-block {
+  order: 1;
+  align-self: flex-start;
+  opacity: 1;
+}
+#delete-block button {
+  order: 2;
+  align-self: flex-end;
 }

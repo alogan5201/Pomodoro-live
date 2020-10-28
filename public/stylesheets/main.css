@@ -2226,7 +2226,7 @@ article.special {
 }
 
 /* Form */
-
+/*
 form {
   margin: 0 0 2em 0;
 }
@@ -2271,7 +2271,7 @@ form > .fields > .field.third {
 
 form > .fields > .field.quarter {
   width: calc(25% - 0.375em);
-}
+} */
 
 @media screen and (max-width: 480px) {
   form > .fields {
@@ -2988,7 +2988,7 @@ table.alt tfoot {
 }
 
 /* Button */
-
+/*
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
@@ -3116,7 +3116,7 @@ button:disabled,
 .button:disabled {
   opacity: 0.25;
 }
-
+*/
 @media screen and (max-width: 480px) {
   input[type="submit"],
   input[type="reset"],
@@ -3233,6 +3233,7 @@ button:disabled,
   text-transform: none;
   margin-left: 5.7em;
   line-height: 6.6;
+  float: left;
 }
 
 #header h1 a {
@@ -3500,6 +3501,7 @@ body.is-menu-visible #menu {
   pointer-events: auto;
   opacity: 1;
   visibility: visible;
+  z-index: 999;
 }
 
 body.is-menu-visible #menu .inner {
@@ -4461,4 +4463,377 @@ body.is-preload #banner p {
 }
 .jumbotron .lang-logo img {
   max-width: 100%;
+}
+#settings-block {
+  display: flex;
+
+  margin: 0 auto;
+
+  justify-content: flex-start;
+
+  flex-wrap: wrap;
+}
+#delete-block {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 100%;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.confirmation-fade-in {
+  order: 1;
+  opacity: 0;
+  align-self: flex-start;
+  -webkit-animation: fade-in-slogan 1.5s 0.1s ease-in forwards;
+  -moz-animation: fade-in-slogan 1.5s 0.1s ease-in forwards;
+  animation: fade-in-slogan 1.5s 0.1s ease-in forwards;
+}
+#delete-block form {
+  order: 2;
+  align-self: flex-end;
+}
+@keyframes fade-in-slogan {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fade-in-slogan {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+#settings-s1-title {
+  order: 1;
+  align-self: flex-start;
+  color: black;
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  line-height: 2.6;
+}
+#settings-s1-title span {
+  color: black;
+  font-family: "Lato", sans-serif;
+  font-weight: 800;
+}
+
+/*DELETE BUTTON 
+------------------------
+------------------------
+------------------------*/
+#delete-block .dlt-button {
+  --background: #275efe;
+  --background-hover: #1d4fe1;
+  --text: #fff;
+  --icon: #fff;
+  display: -webkit-box;
+  display: flex;
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  padding: 9px 20px 9px 12px;
+  border-radius: 11px;
+  line-height: 24px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  overflow: hidden;
+  color: var(--text);
+  background: var(--b, var(--background));
+  -webkit-transition: background 0.4s, -webkit-transform 0.3s;
+  transition: background 0.4s, -webkit-transform 0.3s;
+  transition: transform 0.3s, background 0.4s;
+  transition: transform 0.3s, background 0.4s, -webkit-transform 0.3s;
+  -webkit-transform: scale(var(--scale, 1)) translateZ(0);
+  transform: scale(var(--scale, 1)) translateZ(0);
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+#delete-block .dlt-button:active {
+  --scale: 0.95;
+}
+#delete-block .dlt-button:hover {
+  --b: var(--background-hover);
+}
+#delete-block .dlt-button .icon,
+#delete-block .dlt-button .text {
+  display: inline-block;
+  vertical-align: top;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+#delete-block .dlt-button .icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  z-index: 1;
+  margin-right: 8px;
+  color: var(--text);
+}
+#delete-block .dlt-button .icon svg {
+  width: 96px;
+  height: 96px;
+  display: block;
+  position: absolute;
+  left: -36px;
+  top: -36px;
+  will-change: transform;
+  fill: var(--icon);
+  -webkit-transform: scale(0.25) translateZ(0);
+  transform: scale(0.25) translateZ(0);
+  -webkit-animation: var(--name, var(--name-top, none)) 2400ms ease forwards;
+  animation: var(--name, var(--name-top, none)) 2400ms ease forwards;
+}
+#delete-block .dlt-button .icon svg.bottom {
+  --name: var(--name-bottom, none);
+}
+#delete-block .dlt-button .text {
+  -webkit-animation: var(--name-text, none) 2400ms ease forwards;
+  animation: var(--name-text, none) 2400ms ease forwards;
+}
+#delete-block .dlt-button .text span {
+  display: inline-block;
+  vertical-align: top;
+  opacity: var(--span-o, 1);
+  -webkit-transform: translate(var(--span-x, 0), var(--span-y, 0))
+    rotate(var(--span-r, 0deg)) translateZ(0);
+  transform: translate(var(--span-x, 0), var(--span-y, 0))
+    rotate(var(--span-r, 0deg)) translateZ(0);
+  -webkit-transition: opacity 0.2s linear var(--span-o-d, 0.3s),
+    -webkit-transform 0.3s ease var(--span-d, 0s);
+  transition: opacity 0.2s linear var(--span-o-d, 0.3s),
+    -webkit-transform 0.3s ease var(--span-d, 0s);
+  transition: transform 0.3s ease var(--span-d, 0s),
+    opacity 0.2s linear var(--span-o-d, 0.3s);
+  transition: transform 0.3s ease var(--span-d, 0s),
+    opacity 0.2s linear var(--span-o-d, 0.3s),
+    -webkit-transform 0.3s ease var(--span-d, 0s);
+}
+#delete-block .dlt-button .text span:nth-child(1) {
+  --span-delay: 0.4s;
+  --span-o-d: 0.325s;
+}
+#delete-block .dlt-button .text span:nth-child(2) {
+  --span-delay: 0.45s;
+  --span-o-d: 0.35s;
+}
+#delete-block .dlt-button .text span:nth-child(3) {
+  --span-delay: 0.5s;
+  --span-o-d: 0.375s;
+}
+#delete-block .dlt-button .text span:nth-child(4) {
+  --span-delay: 0.55s;
+  --span-o-d: 0.4s;
+}
+#delete-block .dlt-button .text span:nth-child(5) {
+  --span-delay: 0.6s;
+  --span-o-d: 0.425s;
+}
+#delete-block .dlt-button .text span:nth-child(6) {
+  --span-delay: 0.65s;
+  --span-o-d: 0.45s;
+}
+#delete-block .dlt-button .text span:nth-child(7) {
+  --span-delay: 0.7s;
+  --span-o-d: 0.475s;
+}
+#delete-block .dlt-button .text span:nth-child(8) {
+  --span-delay: 0.75s;
+  --span-o-d: 0.5s;
+}
+#delete-block .dlt-button .text span:nth-child(9) {
+  --span-delay: 0.8s;
+  --span-o-d: 0.525s;
+}
+#delete-block .dlt-button .text span:nth-child(10) {
+  --span-delay: 0.85s;
+  --span-o-d: 0.55s;
+}
+#delete-block .dlt-button .text span:nth-child(11) {
+  --span-delay: 0.9s;
+  --span-o-d: 0.575s;
+}
+#delete-block .dlt-button.delete {
+  --name-top: trash-top;
+  --name-bottom: trash-bottom;
+  --name-text: text;
+  --span-x: -8px;
+  --span-y: 8px;
+  --span-r: -40deg;
+  --span-o: 0;
+}
+#delete-block .dlt-button.delete .text span {
+  --span-o-d: 1s;
+  --span-d: var(--span-delay);
+}
+
+@-webkit-keyframes trash-bottom {
+  25%,
+  32% {
+    -webkit-transform: translate(32px, 19px) scale(1) translateZ(0);
+    transform: translate(32px, 19px) scale(1) translateZ(0);
+  }
+  70%,
+  80% {
+    -webkit-transform: translate(32px, 0) scale(0.25) translateZ(0);
+    transform: translate(32px, 0) scale(0.25) translateZ(0);
+  }
+  90% {
+    -webkit-transform: translateX(-2px) scale(0.25) translateZ(0);
+    transform: translateX(-2px) scale(0.25) translateZ(0);
+  }
+  100% {
+    -webkit-transform: scale(0.25) translateZ(0);
+    transform: scale(0.25) translateZ(0);
+  }
+}
+
+@keyframes trash-bottom {
+  25%,
+  32% {
+    -webkit-transform: translate(32px, 19px) scale(1) translateZ(0);
+    transform: translate(32px, 19px) scale(1) translateZ(0);
+  }
+  70%,
+  80% {
+    -webkit-transform: translate(32px, 0) scale(0.25) translateZ(0);
+    transform: translate(32px, 0) scale(0.25) translateZ(0);
+  }
+  90% {
+    -webkit-transform: translateX(-2px) scale(0.25) translateZ(0);
+    transform: translateX(-2px) scale(0.25) translateZ(0);
+  }
+  100% {
+    -webkit-transform: scale(0.25) translateZ(0);
+    transform: scale(0.25) translateZ(0);
+  }
+}
+@-webkit-keyframes trash-top {
+  25%,
+  32% {
+    -webkit-transform: translate(38px, 4px) scale(1) rotate(-20deg)
+      translateZ(0);
+    transform: translate(38px, 4px) scale(1) rotate(-20deg) translateZ(0);
+  }
+  70%,
+  80% {
+    -webkit-transform: translate(32px, 0) scale(0.25) translateZ(0);
+    transform: translate(32px, 0) scale(0.25) translateZ(0);
+  }
+  90% {
+    -webkit-transform: translateX(-2px) scale(0.25) translateZ(0);
+    transform: translateX(-2px) scale(0.25) translateZ(0);
+  }
+  100% {
+    -webkit-transform: scale(0.25) translateZ(0);
+    transform: scale(0.25) translateZ(0);
+  }
+}
+@keyframes trash-top {
+  25%,
+  32% {
+    -webkit-transform: translate(38px, 4px) scale(1) rotate(-20deg)
+      translateZ(0);
+    transform: translate(38px, 4px) scale(1) rotate(-20deg) translateZ(0);
+  }
+  70%,
+  80% {
+    -webkit-transform: translate(32px, 0) scale(0.25) translateZ(0);
+    transform: translate(32px, 0) scale(0.25) translateZ(0);
+  }
+  90% {
+    -webkit-transform: translateX(-2px) scale(0.25) translateZ(0);
+    transform: translateX(-2px) scale(0.25) translateZ(0);
+  }
+  100% {
+    -webkit-transform: scale(0.25) translateZ(0);
+    transform: scale(0.25) translateZ(0);
+  }
+}
+@-webkit-keyframes text {
+  25% {
+    -webkit-transform: translate(-4px, -6px) rotate(-20deg) translateZ(0);
+    transform: translate(-4px, -6px) rotate(-20deg) translateZ(0);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translate(-12px, 48px) rotate(-80deg) scale(0.2)
+      translateZ(0);
+    transform: translate(-12px, 48px) rotate(-80deg) scale(0.2) translateZ(0);
+  }
+  71% {
+    opacity: 0;
+  }
+  72%,
+  90% {
+    opacity: 0;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes text {
+  25% {
+    -webkit-transform: translate(-4px, -6px) rotate(-20deg) translateZ(0);
+    transform: translate(-4px, -6px) rotate(-20deg) translateZ(0);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translate(-12px, 48px) rotate(-80deg) scale(0.2)
+      translateZ(0);
+    transform: translate(-12px, 48px) rotate(-80deg) scale(0.2) translateZ(0);
+  }
+  71% {
+    opacity: 0;
+  }
+  72%,
+  90% {
+    opacity: 0;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+body .dribbble {
+  position: fixed;
+  display: block;
+  right: 20px;
+  bottom: 20px;
+}
+body .dribbble img {
+  display: block;
+  height: 28px;
+}
+body .twitter {
+  position: fixed;
+  display: block;
+  right: 64px;
+  bottom: 14px;
+}
+body .twitter svg {
+  width: 32px;
+  height: 32px;
+  fill: #1da1f2;
 }

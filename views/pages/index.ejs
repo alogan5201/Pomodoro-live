@@ -7,14 +7,8 @@
   <body>
     
     
-    <!DOCTYPE html>
-<html>
-  <head>
-    <% include ../partials/archiveheader.ejs %>
-  </head>
 
-  <body>
-    <div id="page-wrapper">
+    <div class="timer-wrapper">
       <!-- Header -->
       <header id="header" class="entry">
         <a href="/">
@@ -104,114 +98,121 @@
         </div>
       </nav>
 
-      <!-- Banner -->
-      <section id="banner">
-        <div>
-          <div class="inner">
-            <div class="logo"><i class="archive-icon fas fa-sitemap"></i></div>
+      <div>
+        <audio id="myAudio" src="notification.mp3" preload="auto">
+          
+          
+          
+        </audio>  
+        <div id="pomodoro-container">
+             
+            <div id="pomodoro-clock">
+                <div id="pomodoro-timer"></div>
+                <div>
+                  <input type="text" id="pomodoro-clock-task" placeholder="Enter your task..." />
+                </div>
+               
+<div id="pomodoro-clock-actions">
+<div class='o-play-btn'>
+</div>
+<form id ="rumiForm" action="/tomatos" method="POST">
 
-            <h2>Archive</h2>
-            <div class="wrapper">
-              <audio id="myAudio" src="notification.mp3" preload="auto">
-                
-                
-                
-              </audio>  
-              <div id="pomodoro-container">
-                   
-                  <div id="pomodoro-clock">
-                      <div id="pomodoro-timer"></div>
-                      <div>
-                        <input type="text" id="pomodoro-clock-task" placeholder="Enter your task..." />
-                      </div>
-                     
-                      <div id="pomodoro-clock-actions">
-                        <button  class = "o-play-btn">
-                            <i class="o-play-btn__icon" id="play-icon"></i>
-                            <!-- <i class="fas fa-pause hidden" id="pause-icon"></i> -->
-                            <div class="o-play-btn__mask"></div>
-                          </button>
-                          <form id ="rumiForm" action="/tomatos" method="POST">
-                           
-                            <div>
-                              <button id="pomodoro-stop" type="submit" class="hidden" value="clicked">
-                                <i class="fas fa-stop"></i>
-                              </button>
-                            </div>
-                          </form>
-                      </div>
-                      <!-- new -->
-                      <div id="pomodoro-clock-title">
-                        
-                      </div>
-                      <div id="pomodoro-clock-actions">
-                        <div class="pomodoro-input">
-                          <label>Work Duration</label>
-                          <input name="input-work-duration" id="input-work-duration" type="number" />
-                        </div>
-                        <div class="pomodoro-input">
-                          <label>Break Duration</label>
-                          <input name="input-break-duration" id="input-break-duration" type="number" />
-                        </div>
-                      </div>
-                      <div id = "work-session-status">
-                        <p class="time-left">
-          
-                        </p> <br>
-                        <button>TEST</button>
-                      </div>
-                      <div id="pomodoro-info">
-                        <h3>Pomodoro Sessions!!! </h3>
-                        <ul class = "tomatos-block" id="pomodoro-sessions">
-            
-                          
-            
-                         
-                        </ul>
-                        <form action="/deleteAll" method="POST">
-                          
-                          <div id ="slide-in" class="box hide">
-                            <button class="dlt-button touch delete" id="myButton" type="submit"  value="clicked">
-                              
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                      
-                    <div>
-          
-                      
-          <div>
-          
-          <ul class="tomatos">
-            <% for ( let tomato of tomatos ) { %>
-              <li class="tomato">
-                <span><%= tomato.name %>
-                <span><%= tomato.month %>
-                  <span id="date"><%= tomato.date %>
-              </li>
-            <% } %>
-          
-          </ul>
-          </div>
-          
-          
-            
-            
-          </div>
-          </div>
-          
+<div>
+<button id="pomodoro-stop" type="submit" class="hidden stop" value="clicked">
+  <svg
+xmlns="http://www.w3.org/2000/svg"
+x="0px"
+y="0px"
+viewBox="0 0 400 400"
+>
+<g class="icon icon-stop">
+<circle
+class="icon-border"
+stroke-miterlimit="10"
+cx="200"
+cy="200"
+r="198"
+></circle>
+<rect
+class="icon-actual"
+x="120"
+y="120"
+stroke-miterlimit="10"
+width="160"
+height="160"
+></rect>
+</g>
+</svg>
+</button>
+</div>
+</form>
+</div>
+                <!-- new -->
+                <div id="pomodoro-clock-title">
                   
+                </div>
+                <div id="pomodoro-clock-actions">
+                  <div class="pomodoro-input">
+                    <label>Work Duration</label>
+                    <input name="input-work-duration" id="input-work-duration" type="number" />
+                  </div>
+                  <div class="pomodoro-input">
+                    <label>Break Duration</label>
+                    <input name="input-break-duration" id="input-break-duration" type="number" />
+                  </div>
+                </div>
+                <div id = "work-session-status">
+                  <p class="time-left">
+    
+                  </p> <br>
+                  <button>TEST</button>
+                </div>
+                <div id="pomodoro-info">
+                  
+                  <ul class = "tomatos-block" id="pomodoro-sessions">
+      
                     
-                  </div>
-                  </div>
-            
-          </div>
-        </div>
-      </section>
-
-      <!-- Wrapper -->
+      
+                   
+                  </ul>
+                  <form action="/deleteAll" method="POST">
+                    
+                    <div id ="slide-in" class="box hide">
+                      <button class="dlt-button touch delete" id="myButton" type="submit"  value="clicked">
+                        
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                
+              <div>
+    
+                
+    <div>
+    
+    <ul class="tomatos">
+      <% for ( let tomato of tomatos ) { %>
+        <li class="tomato">
+          <span><%= tomato.name %>
+          <span><%= tomato.month %>
+            <span id="date"><%= tomato.date %>
+        </li>
+      <% } %>
+    
+    </ul>
     </div>
+    
+    
+      
+      
+</div>
+</div>
+
+
+
+</div>
+</div>
+    
    
 
          <!-- <div class='test'><img src='./half-tomato-png.png' alt='test'></div> --> 
@@ -263,6 +264,14 @@ $('.o-play-btn').on('click', function(){
     $('#slide-in').addClass('show');
 });
 
+$("#pomodoro-stop").on("click", function (e) {
+        if ($(this).hasClass("active")) {
+          $(this).removeClass("active");
+        } else {
+          $("button").removeClass("active");
+          $(this).addClass("active");
+        }
+      });
 
 
 
