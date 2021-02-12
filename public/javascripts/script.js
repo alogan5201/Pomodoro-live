@@ -439,7 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let lastElm = tomatos.lastElementChild;
     //let mySVG = document.getElementById("mySVG");
     let li = document.createElement("li");
-    if (sessionLabel == "Work" && timeSpentInCurrentSession > 1800) {
+    if (sessionLabel == "Work" && timeSpentInCurrentSession > 2) {
       if (!lastElm || lastElm.className == "full-tomato") {
         li.setAttribute("class", "half-tomato");
         li.appendChild(svg);

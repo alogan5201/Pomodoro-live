@@ -64,7 +64,7 @@ function deleteTomatos(e){
 (async function () {
   try {
     const conn = await mongoose.connect(uri, opts);
-    const monthNames = [
+   /* const monthNames = [
       "January",
       "February",
       "March",
@@ -92,13 +92,13 @@ function deleteTomatos(e){
     if (mm < 10) {
       mm = "0" + mm;
     }
-    today = mm + "-" + dd + "-" + yyyy;
+    today = mm + "-" + dd + "-" + yyyy;*/
     // Clean data for demo
     /*
     await Promise.all(
       Object.entries(conn.models).map(([k, m]) => m.deleteMany())
     );*/
-
+/*
     await Tomato.insertMany([
       { name: "half-tomato", month: "October", date: today },
       { name: "half-tomato", month: "August", date: "08-20-2020" },
@@ -114,7 +114,7 @@ function deleteTomatos(e){
         date: new Date().toISOString(),
       },
     ]);
-
+*/
     // Insert some starter sample
     /*
     await Client.insertMany([
