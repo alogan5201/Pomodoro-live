@@ -24,6 +24,7 @@ const pool = new Pool({
   },
 });
 
+
 const uri =
 process.env.MONGO_URI;
 const opts = {
@@ -132,28 +133,28 @@ function deleteTomatos(e){
   }
 })();
 
-express()
-  .set("view engine", "ejs")
-  .use(bodyParser.json())
-  .use(bodyParser.urlencoded({
+const app = express()
+  app.set("view engine", "ejs")
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({
     extended: false
   }))
-  .use("/", rootRoutes)
-  .use("/tomatos", tomatoRoutes)
+  app.use("/", rootRoutes)
+  app .use("/tomatos", tomatoRoutes)
   //.use('/deleteAll', deleteRoutes)
   //.use('/updateclients', updateclientRoutes)
-  .use("/deleteAll", deleteTomatoRoutes)
-  .use(cors())
-  .use(express.json())
-  .use(express.static(path.join(__dirname, "public")))
-  .set("views", path.join(__dirname, "views"))
+  app.use("/deleteAll", deleteTomatoRoutes)
+  app.use(cors())
+  app.use(express.json())
+  app.use(express.static(path.join(__dirname, "public")))
+  app.set("views", path.join(__dirname, "views"))
 
-  .get("/", (req, res) => res.render("pages/index"))
-  .get("/archive", (req, res) => res.render("pages/archive"))
-  .get("/settings", (req, res) => res.render("pages/settings"))
-  .get("/cool", (req, res) => res.send(cool()))
-  .get("/times", (req, res) => res.send(showTimes()))
-  .get("/db", async (req, res) => {
+  app.get("/", (req, res) => res.render("pages/index"))
+  app.get("/archive", (req, res) => res.render("pages/archive"))
+  app.get("/settings", (req, res) => res.render("pages/settings"))
+  app.get("/cool", (req, res) => res.send(cool()))
+  app.get("/times", (req, res) => res.send(showTimes()))
+  app.get("/db", async (req, res) => {
     try {
       const client = await pool.connect();
       const result = await client.query("SELECT * FROM test_table");
@@ -167,6 +168,7 @@ express()
       res.send("Error " + err);
     }
   })
+ 
 
   /* Note.find({}).then(result => {
     result.forEach(note => {
@@ -174,8 +176,16 @@ express()
     })
     mongoose.connection.close()
   })*/
+  if(process.env.NODE_ENV === 'production') {
+    app.use((req, res, next) => {
+      if (req.header('x-forwarded-proto') !== 'https')
+        res.redirect(`https://${req.header('host')}${req.url}`)
+      else
+        next()
+    })
+  };
 
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+  app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 showTimes = () => {
   for (i = 0; i < times; i++) {
