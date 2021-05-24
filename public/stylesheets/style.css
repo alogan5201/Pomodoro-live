@@ -13,6 +13,14 @@ body {
 
   text-align: center;
 }
+#localTime {
+  text-align: center;
+margin: 0 auto;
+position: fixed;
+top: 0;
+left: 0px;
+right: 62px;
+}
 /*NavBar*/
 .navbar {
   padding-top: 0.5em;
@@ -265,9 +273,9 @@ body {
   flex-wrap: wrap;
 }
 #work-session-status {
-  display: none;
-  /* display: flex;*/
-  background-color: white;
+ display: none;
+   /*display: flex;*/
+     background-color: white;
   border: solid black 2px;
   width: 30vw;
   margin-top: 10px;
@@ -277,6 +285,7 @@ body {
   text-align: center;
   height: auto;
   flex-wrap: wrap;
+  color: red;
 }
 #work-session-status p {
   flex: 0 0 100%;
@@ -710,4 +719,9 @@ li {
 #delete-block button {
   order: 2;
   align-self: flex-end;
+}
+
+
+.display-none{
+  display:none;
 }

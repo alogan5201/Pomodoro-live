@@ -2,6 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   window.onload = (event) => {
     let clockText = document.querySelector(".progressbar-text");
     let WorkSessionStatus = document.getElementById("work-session-status");
+    var newDate = new Date();
+    var toLocalTime = newDate.toLocaleTimeString();
+    let timeDisplay = document.getElementById("localTime");
+    timeDisplay.innerHTML = toLocalTime;
 
     window.setInterval(function () {
       document.title = " " + " " + " " + " " + clockText.innerText;
@@ -221,14 +225,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let workDurationInput = document.querySelector("#input-work-duration");
   let breakDurationInput = document.querySelector("#input-break-duration");
 
-  workDurationInput.value = "30";
+  workDurationInput.value = "10";
   breakDurationInput.value = "5";
   let isClockRunning = false;
   // in seconds = 30 mins
-  let workSessionDuration = 3;
-  let currentTimeLeftInSession = 3;
+  let workSessionDuration = 10;
+  let currentTimeLeftInSession = 10;
   // in seconds = 5 mins;
-  let breakSessionDuration = 2;
+  let breakSessionDuration = 5;
   let type = "Work";
   let timeSpentInCurrentSession = 0;
   let currentTaskLabel = document.querySelector("#pomodoro-clock-task");
@@ -236,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const progressBar = new ProgressBar.Circle("#pomodoro-timer", {
     strokeWidth: 2,
     text: {
-      value: "00:03",
+      value: "00:10",
     },
     trailColor: "#f4f4f4",
   });
@@ -249,15 +253,42 @@ document.addEventListener("DOMContentLoaded", () => {
   stopButton.addEventListener("click", () => {
     toggleClock(true);
   });
-  // UPDATE WORK TIME
-  workDurationInput.addEventListener("input", () => {
+  // Close 
+/*
+  document.querySelector("close-popup1").addEventListener("click", function(event) {
+    let popUp1 = document.getElementById("popup1");
+        popUp1.classList.remove("visible");
+    toggleClock(true);
+    event.preventDefault();
+}, false);
+document.querySelector("close-popup2").addEventListener("click", function(event) {
+  let popUp2 = document.getElementById("popup2");
+      popUp2.classList.remove("visible");
+  toggleClock(true);
+  event.preventDefault();
+}, false);*/
+
+  // -------------------------(DISABLED FOR DEMO)-------------------------------------------UPDATE WORK TIME----------------------------
+  /*workDurationInput.addEventListener("input", () => {
     updatedWorkSessionDuration = minuteToSeconds(workDurationInput.value);
+  });*/
+
+  //-----------------------DEMO Version---------------------------------------->>>>>>
+  workDurationInput.addEventListener("input", () => {
+    updatedWorkSessionDuration = workDurationInput.value;
+  });
+  breakDurationInput.addEventListener("input", () => {
+    updatedBreakSessionDuration = breakDurationInput.value;
   });
 
-  // UPDATE PAUSE TIME
-  breakDurationInput.addEventListener("input", () => {
+
+
+   //-----------------------DEMO Version---------------------------------------->>>>>>
+
+  // -------------------------(MODIFIED FOR DEMO--------------------------------------------UPDATE PAUSE TIME-------------------------
+  /* breakDurationInput.addEventListener("input", () => {
     updatedBreakSessionDuration = minuteToSeconds(breakDurationInput.value);
-  });
+  });*/
   class AndrewsProgress {
     constructor(score) {
       this.score = score;
@@ -330,28 +361,110 @@ document.addEventListener("DOMContentLoaded", () => {
       currentTimeLeftInSession--;
       timeSpentInCurrentSession++;
     } else if (currentTimeLeftInSession === 0) {
-      timeSpentInCurrentSession = 0;
-      document.getElementById("myAudio").play();
-      alert("Times up");
+     // timeSpentInCurrentSession = 0;
+     let statusText = document.getElementById("work-session-status");
+     statusText.innerText = timeSpentInCurrentSession;
 
       // Timer is over -> if work switch to break, viceversa
       if (type === "Work") {
-        currentTimeLeftInSession = breakSessionDuration;
-        displaySessionLog("Work");
-        type = "Break";
-        setUpdatedTimers();
-        // new
-        currentTaskLabel.value = "Break";
-        currentTaskLabel.disabled = true;
-      } else {
-        currentTimeLeftInSession = workSessionDuration;
-        type = "Work";
-        // new
-        if (currentTaskLabel.value === "Break") {
-          currentTaskLabel.value = workSessionLabel;
+
+        let statusText = document.getElementById("work-session-status");
+        statusText.innerText = timeSpentInCurrentSession;
+              
+              let popUp = document.getElementById("popup1");
+              popUp.classList.add("visible");
+              let continueWork = document.getElementById("continue");
+              let takeBreak = document.getElementById("break");
+              
+              let closePopUp1 = document.getElementById("close-popup1");
+              continueWork.onclick = function()
+              { 
+                currentTimeLeftInSession = workSessionDuration;
+               
+                displaySessionLog("Work");
+                type = "Work";
+                timeSpentInCurrentSession = 0;
+                setUpdatedTimers();
+                currentTaskLabel.value = "Work";
+                currentTaskLabel.disabled = false;
+                popUp.classList.remove("visible");
+              }
+              takeBreak.onclick = function(){
+                currentTimeLeftInSession = breakSessionDuration;
+               
+                displaySessionLog("Work");
+                type = "Break";
+                timeSpentInCurrentSession = 0;
+                setUpdatedTimers();
+                currentTaskLabel.value = "Break";
+                currentTaskLabel.disabled = true;
+                popUp.classList.remove("visible");
+              }
+              closePopUp1.onclick = function(event){
+                currentTimeLeftInSession = 10;
+               
+                timeSpentInCurrentSession = 0;
+                currentTaskLabel.value = "Work";
+                currentTaskLabel.disabled = true;
+                popUp.classList.remove("visible");
+                setUpdatedTimers();
+                stopClock();
+                startButton.classList.remove("o-play-btn--playing");
+                event.preventDefault();
+
+              }
+
+              /*
+  document.querySelector("close-popup1").addEventListener("click", function(event) {
+    let popUp1 = document.getElementById("popup1");
+        popUp1.classList.remove("visible");
+    toggleClock(true);
+    event.preventDefault();
+}, false);
+document.querySelector("close-popup2").addEventListener("click", function(event) {
+  let popUp2 = document.getElementById("popup2");
+      popUp2.classList.remove("visible");
+  toggleClock(true);
+  event.preventDefault();
+}, false);*/
+       
+      } else if (type == "Break"){
+        let popUp2 = document.getElementById("popup2");          
+        popUp2.classList.add("visible");
+        let backToWork = document.getElementById("backtowork");
+        let closePopUp2 = document.getElementById("close-popup2");
+        backToWork.onclick = function(){
+          currentTimeLeftInSession = workSessionDuration;
+          timeSpentInCurrentSession = 0;
+          type = "Work";
+          currentTaskLabel.value = "Work";
+         currentTaskLabel.disabled = false;
+         
+         
+          
+          popUp2.classList.remove("visible");
         }
+        closePopUp2.onclick = function(event){
+          currentTimeLeftInSession = 10;
+               
+          timeSpentInCurrentSession = 0;
+          currentTaskLabel.value = "Work";
+          currentTaskLabel.disabled = true;
+          popUp2.classList.remove("visible");
+          setUpdatedTimers();
+          stopClock();
+          startButton.classList.remove("o-play-btn--playing");
+          event.preventDefault();
+        }
+       }
+      
+      else {
+        currentTimeLeftInSession = workSessionDuration;
+        timeSpentInCurrentSession = 0;
+        type = "Work";
+       
         currentTaskLabel.disabled = false;
-        displaySessionLog("Break");
+        
       }
     }
     displayCurrentTimeLeftInSession();
@@ -373,7 +486,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const displaySessionLog = function displaySessionLog(type) {
-    const WorkSessionStatus = document.getElementById("pomodoro-info");
+    const WorkSessionStatus = document.getElementById("work-session-status");
+    let timePassed = WorkSessionStatus.innerText;
     const p = document.createElement("p");
     // let WorkSessionStatusChild = WorkSessionStatus.lastElementChild;
     if (type === "Work") {
@@ -381,7 +495,7 @@ document.addEventListener("DOMContentLoaded", () => {
       sessionLabel = currentTaskLabel.value ? currentTaskLabel.value : "Work";
       workSessionLabel = sessionLabel;
 
-      WorkSessionStatus.setAttribute("class", timeSpentInCurrentSession);
+      
     } else {
       sessionLabel = "Break";
     }
@@ -441,7 +555,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let lastElm = tomatos.lastElementChild;
     //let mySVG = document.getElementById("mySVG");
     let li = document.createElement("li");
-    if (sessionLabel == "Work" && timeSpentInCurrentSession > 2) {
+    if (sessionLabel == "Work" && timePassed > 5) {
       if (!lastElm || lastElm.className == "full-tomato") {
         li.setAttribute("class", "half-tomato");
         li.appendChild(svg);
