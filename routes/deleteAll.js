@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Tomato = require("../models/tomato");
 const uri =
-  "mongodb+srv://logan:drdeath@cluster0.mudoo.mongodb.net/MyPomodoro?retryWrites=true&w=majority";
+process.env.MONGO_URI;
 const opts = { useNewUrlParser: true };
 
 mongoose.set("useFindAndModify", false);

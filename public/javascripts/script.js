@@ -2,10 +2,35 @@ document.addEventListener("DOMContentLoaded", () => {
   window.onload = (event) => {
     let clockText = document.querySelector(".progressbar-text");
     let WorkSessionStatus = document.getElementById("work-session-status");
-    var newDate = new Date();
-    var toLocalTime = newDate.toLocaleTimeString();
-    let timeDisplay = document.getElementById("localTime");
-    timeDisplay.innerHTML = toLocalTime;
+    function showTime(){
+      var date = new Date();
+      var h = date.getHours(); // 0 - 23
+      var m = date.getMinutes(); // 0 - 59
+     
+      var session = "AM";
+      
+      if(h == 0){
+          h = 12;
+      }
+      
+      if(h > 12){
+          h = h - 12;
+          session = "PM";
+      }
+      
+      h = (h < 10) ? "0" + h : h;
+      m = (m < 10) ? "0" + m : m;
+     
+      
+      var time = h + ":" + m + ":" + session;
+      document.getElementById("MyClockDisplay").innerText = time;
+      document.getElementById("MyClockDisplay").textContent = time;
+      
+      setTimeout(showTime, 1000);
+      
+  }
+  
+  showTime();
 
     window.setInterval(function () {
       document.title = " " + " " + " " + " " + clockText.innerText;

@@ -63,6 +63,7 @@
   width: 30%;
   position: relative;
   transition: all 5s ease-in-out;
+  color:black;
 }
 
 .popup h2 {
@@ -168,7 +169,7 @@
           </div>
           <h1>PomoProgress</h1>
         </a>
-<h1 id = "localTime"></h1>
+        <h1 id="MyClockDisplay" class="clock" onload="showTime()"></h1>
         <nav>
           <a href="#menu">Menu</a>
         </nav>
@@ -182,8 +183,7 @@
             <li><a href="/">Timer</a></li>
             <li><a href="/archive">Archive</a></li>
             <li><a href="/settings">Settings</a></li>
-            <li><a href="#">Log In</a></li>
-            <li><a href="#">Sign Up</a></li>
+          
           </ul>
           <a href="#" class="close">Close</a>
         </div>
@@ -256,14 +256,12 @@ height="160"
         </form>
      
       
-      <div class="content">
-        Thank to pop me out of that button, but now i'm done so you can close this window.
-      </div>
+    
     </div>
   </div>
   <div id="popup2" class="overlay">
     <div class="popup">
-      <h2>Your Break is Over!</h2>
+      <h2>Break time is over</h2>
      
 
         <div>
@@ -274,9 +272,7 @@ height="160"
         
      
       <a id= "close-popup2" class="close" >&times;</a>
-      <div class="content">
-        Thank to pop me out of that button, but now i'm done so you can close this window.
-      </div>
+     
     </div>
   </div>
   
@@ -351,7 +347,16 @@ height="160"
 </div>
 </div>
     
-   
+   <section id="footer">
+     <ul class="copyright">
+       <li>
+           Web Development Inquiries | <a href="https://www.andrewlogan.dev" target="_blank" rel="noopener noreferrer">andrewlogan.dev</a> 
+       </li>
+     </ul>
+
+  
+    
+   </section>
 
          <!-- <div class='test'><img src='./half-tomato-png.png' alt='test'></div> --> 
         

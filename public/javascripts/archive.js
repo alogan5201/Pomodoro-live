@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
       let b = document.createElement("li");
 
       b.appendChild(halfTomatoSVG);
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
       let b = document.createElement("li");
 
       b.appendChild(halfTomatoSVG);
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
       let b = document.createElement("li");
 
       b.appendChild(halfTomatoSVG);
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
       let b = document.createElement("li");
 
       b.appendChild(halfTomatoSVG);
@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
       let b = document.createElement("li");
 
       b.appendChild(halfTomatoSVG);
@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
       let b = document.createElement("li");
 
       b.appendChild(halfTomatoSVG);
@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -326,7 +326,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
       let b = document.createElement("li");
 
       b.appendChild(halfTomatoSVG);
@@ -351,7 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
       let b = document.createElement("li");
 
       b.appendChild(halfTomatoSVG);
@@ -391,7 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
       let b = document.createElement("li");
 
       b.appendChild(halfTomatoSVG);
@@ -430,7 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -444,7 +444,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
 
       let b = document.createElement("li");
 
@@ -470,7 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
       let b = document.createElement("li");
 
       b.appendChild(halfTomatoSVG);
@@ -509,7 +509,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; records.length > i; i += 2) {
       let fullTomatoSVG = document.createElement("img");
       fullTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/full-tomato.svg";
+        "full-tomato.svg";
       let t = document.createElement("li");
 
       t.appendChild(fullTomatoSVG);
@@ -523,7 +523,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (records.length % 2 != 0) {
       let halfTomatoSVG = document.createElement("img");
       halfTomatoSVG.src =
-        "https://andrewlogan.me/wp-content/uploads/2020/10/half.svg";
+        "half.svg";
       let b = document.createElement("li");
 
       b.appendChild(halfTomatoSVG);

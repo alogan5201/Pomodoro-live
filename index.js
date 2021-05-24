@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cool = require("cool-ascii-faces");
 const bodyParser = require("body-parser");
-//require('dotenv').config()
+require('dotenv').config()
 const Tomato = require("./models/tomato");
 const rootRoutes = require("./routes/root");
 //const deleteRoutes = require('./routes/deleteAll');
@@ -25,7 +25,7 @@ const pool = new Pool({
 });
 
 const uri =
-  "mongodb+srv://logan:drdeath@cluster0.mudoo.mongodb.net/MyPomodoro?retryWrites=true&w=majority";
+process.env.MONGO_URI;
 const opts = {
   useNewUrlParser: true,
   useUnifiedTopology: true
