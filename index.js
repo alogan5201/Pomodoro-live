@@ -14,6 +14,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3000;
 let result = "";
 const times = process.env.TIMES || 5;
+var sslRedirect = require('heroku-ssl-redirect');
 const {
   Pool
 } = require("pg");
@@ -134,6 +135,7 @@ function deleteTomatos(e){
 })();
 
 const app = express()
+
   app.set("view engine", "ejs")
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({
@@ -148,7 +150,7 @@ const app = express()
   app.use(express.json())
   app.use(express.static(path.join(__dirname, "public")))
   app.set("views", path.join(__dirname, "views"))
-
+  app.use(sslRedirect())
   app.get("/", (req, res) => res.render("pages/index"))
   app.get("/archive", (req, res) => res.render("pages/archive"))
   app.get("/settings", (req, res) => res.render("pages/settings"))
@@ -168,6 +170,7 @@ const app = express()
       res.send("Error " + err);
     }
   })
+  
  
 
   /* Note.find({}).then(result => {
@@ -176,14 +179,7 @@ const app = express()
     })
     mongoose.connection.close()
   })*/
-  if(process.env.NODE_ENV === 'production') {
-    app.use((req, res, next) => {
-      if (req.header('x-forwarded-proto') !== 'https')
-        res.redirect(`https://${req.header('host')}${req.url}`)
-      else
-        next()
-    })
-  };
+ 
 
   app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 
