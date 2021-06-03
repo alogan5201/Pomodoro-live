@@ -14,7 +14,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3000;
 let result = "";
 const times = process.env.TIMES || 5;
-var sslRedirect = require('heroku-ssl-redirect');
+const sslRedirect = require('heroku-ssl-redirect').default;
 const {
   Pool
 } = require("pg");
