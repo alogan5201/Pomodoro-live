@@ -1,10 +1,10 @@
 
 const mongoose = require('mongoose')
 const Note = require('./models/note')
-const password = 'drdeath'
+
 
 const url =
-  `mongodb+srv://logan:${password}@cluster0.mudoo.mongodb.net/tomatodb?retryWrites=true&w=majority`
+  'mongodb+srv://logan:drdeath@cluster0.mudoo.mongodb.net/tomatodb?retryWrites=true&w=majority'
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 
