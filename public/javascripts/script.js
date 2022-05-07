@@ -2,35 +2,33 @@ document.addEventListener("DOMContentLoaded", () => {
   window.onload = (event) => {
     let clockText = document.querySelector(".progressbar-text");
     let WorkSessionStatus = document.getElementById("work-session-status");
-    function showTime(){
+    function showTime() {
       var date = new Date();
       var h = date.getHours(); // 0 - 23
       var m = date.getMinutes(); // 0 - 59
-     
+
       var session = "AM";
-      
-      if(h == 0){
-          h = 12;
+
+      if (h == 0) {
+        h = 12;
       }
-      
-      if(h > 12){
-          h = h - 12;
-          session = "PM";
+
+      if (h > 12) {
+        h = h - 12;
+        session = "PM";
       }
-      
-      h = (h < 10) ? "0" + h : h;
-      m = (m < 10) ? "0" + m : m;
-     
-      
+
+      h = h < 10 ? "0" + h : h;
+      m = m < 10 ? "0" + m : m;
+
       var time = h + ":" + m + ":" + session;
       document.getElementById("MyClockDisplay").innerText = time;
       document.getElementById("MyClockDisplay").textContent = time;
-      
+
       setTimeout(showTime, 1000);
-      
-  }
-  
-  showTime();
+    }
+
+    showTime();
 
     window.setInterval(function () {
       document.title = " " + " " + " " + " " + clockText.innerText;
@@ -242,7 +240,6 @@ document.addEventListener("DOMContentLoaded", () => {
   */
 
   const startButton = document.querySelector(".o-play-btn");
-
   const stopButton = document.querySelector("#pomodoro-stop");
   let updatedWorkSessionDuration;
   let updatedBreakSessionDuration;
@@ -250,14 +247,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let workDurationInput = document.querySelector("#input-work-duration");
   let breakDurationInput = document.querySelector("#input-break-duration");
 
-  workDurationInput.value = "10";
+  workDurationInput.value = "30";
   breakDurationInput.value = "5";
   let isClockRunning = false;
   // in seconds = 30 mins
-  let workSessionDuration = 10;
-  let currentTimeLeftInSession = 10;
+  let workSessionDuration = 1800;
+  let currentTimeLeftInSession = 1800;
   // in seconds = 5 mins;
-  let breakSessionDuration = 5;
+  let breakSessionDuration = 300;
   let type = "Work";
   let timeSpentInCurrentSession = 0;
   let currentTaskLabel = document.querySelector("#pomodoro-clock-task");
@@ -265,7 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const progressBar = new ProgressBar.Circle("#pomodoro-timer", {
     strokeWidth: 2,
     text: {
-      value: "00:10",
+      value: "30:00",
     },
     trailColor: "#f4f4f4",
   });
@@ -278,8 +275,8 @@ document.addEventListener("DOMContentLoaded", () => {
   stopButton.addEventListener("click", () => {
     toggleClock(true);
   });
-  // Close 
-/*
+  // Close
+  /*
   document.querySelector("close-popup1").addEventListener("click", function(event) {
     let popUp1 = document.getElementById("popup1");
         popUp1.classList.remove("visible");
@@ -306,9 +303,7 @@ document.querySelector("close-popup2").addEventListener("click", function(event)
     updatedBreakSessionDuration = breakDurationInput.value;
   });
 
-
-
-   //-----------------------DEMO Version---------------------------------------->>>>>>
+  //-----------------------DEMO Version---------------------------------------->>>>>>
 
   // -------------------------(MODIFIED FOR DEMO--------------------------------------------UPDATE PAUSE TIME-------------------------
   /* breakDurationInput.addEventListener("input", () => {
@@ -334,20 +329,19 @@ document.querySelector("close-popup2").addEventListener("click", function(event)
   };
   const setUpdatedTimers = () => {
     if (type === "Work") {
-      currentTimeLeftInSession = updatedWorkSessionDuration ?
-        updatedWorkSessionDuration :
-        workSessionDuration;
+      currentTimeLeftInSession = updatedWorkSessionDuration
+        ? updatedWorkSessionDuration
+        : workSessionDuration;
 
       workSessionDuration = currentTimeLeftInSession;
     } else {
-      currentTimeLeftInSession = updatedBreakSessionDuration ?
-        updatedBreakSessionDuration :
-        breakSessionDuration;
+      currentTimeLeftInSession = updatedBreakSessionDuration
+        ? updatedBreakSessionDuration
+        : breakSessionDuration;
       breakSessionDuration = currentTimeLeftInSession;
     }
   };
   const toggleClock = (reset) => {
-
     togglePlayPauseIcon(reset);
 
     if (reset) {
@@ -380,66 +374,62 @@ document.querySelector("close-popup2").addEventListener("click", function(event)
   };
 
   const stepDown = () => {
-
     if (currentTimeLeftInSession > 0) {
       // decrease time left / increase time spent
       currentTimeLeftInSession--;
       timeSpentInCurrentSession++;
     } else if (currentTimeLeftInSession === 0) {
-     // timeSpentInCurrentSession = 0;
-     let statusText = document.getElementById("work-session-status");
-     statusText.innerText = timeSpentInCurrentSession;
+      // timeSpentInCurrentSession = 0;
+      let statusText = document.getElementById("work-session-status");
+      statusText.innerText = timeSpentInCurrentSession;
 
       // Timer is over -> if work switch to break, viceversa
       if (type === "Work") {
-
         let statusText = document.getElementById("work-session-status");
         statusText.innerText = timeSpentInCurrentSession;
-              
-              let popUp = document.getElementById("popup1");
-              popUp.classList.add("visible");
-              let continueWork = document.getElementById("continue");
-              let takeBreak = document.getElementById("break");
-              
-              let closePopUp1 = document.getElementById("close-popup1");
-              continueWork.onclick = function()
-              { 
-                currentTimeLeftInSession = workSessionDuration;
-               
-                displaySessionLog("Work");
-                type = "Work";
-                timeSpentInCurrentSession = 0;
-                setUpdatedTimers();
-                currentTaskLabel.value = "Work";
-                currentTaskLabel.disabled = false;
-                popUp.classList.remove("visible");
-              }
-              takeBreak.onclick = function(){
-                currentTimeLeftInSession = breakSessionDuration;
-               
-                displaySessionLog("Work");
-                type = "Break";
-                timeSpentInCurrentSession = 0;
-                setUpdatedTimers();
-                currentTaskLabel.value = "Break";
-                currentTaskLabel.disabled = true;
-                popUp.classList.remove("visible");
-              }
-              closePopUp1.onclick = function(event){
-                currentTimeLeftInSession = 10;
-               
-                timeSpentInCurrentSession = 0;
-                currentTaskLabel.value = "Work";
-                currentTaskLabel.disabled = true;
-                popUp.classList.remove("visible");
-                setUpdatedTimers();
-                stopClock();
-                startButton.classList.remove("o-play-btn--playing");
-                event.preventDefault();
 
-              }
+        let popUp = document.getElementById("popup1");
+        popUp.classList.add("visible");
+        let continueWork = document.getElementById("continue");
+        let takeBreak = document.getElementById("break");
 
-              /*
+        let closePopUp1 = document.getElementById("close-popup1");
+        continueWork.onclick = function () {
+          currentTimeLeftInSession = workSessionDuration;
+
+          displaySessionLog("Work");
+          type = "Work";
+          timeSpentInCurrentSession = 0;
+          setUpdatedTimers();
+          currentTaskLabel.value = "Work";
+          currentTaskLabel.disabled = false;
+          popUp.classList.remove("visible");
+        };
+        takeBreak.onclick = function () {
+          currentTimeLeftInSession = breakSessionDuration;
+
+          displaySessionLog("Work");
+          type = "Break";
+          timeSpentInCurrentSession = 0;
+          setUpdatedTimers();
+          currentTaskLabel.value = "Break";
+          currentTaskLabel.disabled = true;
+          popUp.classList.remove("visible");
+        };
+        closePopUp1.onclick = function (event) {
+          currentTimeLeftInSession = 10;
+
+          timeSpentInCurrentSession = 0;
+          currentTaskLabel.value = "Work";
+          currentTaskLabel.disabled = true;
+          popUp.classList.remove("visible");
+          setUpdatedTimers();
+          stopClock();
+          startButton.classList.remove("o-play-btn--playing");
+          event.preventDefault();
+        };
+
+        /*
   document.querySelector("close-popup1").addEventListener("click", function(event) {
     let popUp1 = document.getElementById("popup1");
         popUp1.classList.remove("visible");
@@ -452,26 +442,23 @@ document.querySelector("close-popup2").addEventListener("click", function(event)
   toggleClock(true);
   event.preventDefault();
 }, false);*/
-       
-      } else if (type == "Break"){
-        let popUp2 = document.getElementById("popup2");          
+      } else if (type == "Break") {
+        let popUp2 = document.getElementById("popup2");
         popUp2.classList.add("visible");
         let backToWork = document.getElementById("backtowork");
         let closePopUp2 = document.getElementById("close-popup2");
-        backToWork.onclick = function(){
+        backToWork.onclick = function () {
           currentTimeLeftInSession = workSessionDuration;
           timeSpentInCurrentSession = 0;
           type = "Work";
           currentTaskLabel.value = "Work";
-         currentTaskLabel.disabled = false;
-         
-         
-          
+          currentTaskLabel.disabled = false;
+
           popUp2.classList.remove("visible");
-        }
-        closePopUp2.onclick = function(event){
+        };
+        closePopUp2.onclick = function (event) {
           currentTimeLeftInSession = 10;
-               
+
           timeSpentInCurrentSession = 0;
           currentTaskLabel.value = "Work";
           currentTaskLabel.disabled = true;
@@ -480,16 +467,13 @@ document.querySelector("close-popup2").addEventListener("click", function(event)
           stopClock();
           startButton.classList.remove("o-play-btn--playing");
           event.preventDefault();
-        }
-       }
-      
-      else {
+        };
+      } else {
         currentTimeLeftInSession = workSessionDuration;
         timeSpentInCurrentSession = 0;
         type = "Work";
-       
+
         currentTaskLabel.disabled = false;
-        
       }
     }
     displayCurrentTimeLeftInSession();
@@ -519,8 +503,6 @@ document.querySelector("close-popup2").addEventListener("click", function(event)
       // currentTaskLabel.value = "Break";
       sessionLabel = currentTaskLabel.value ? currentTaskLabel.value : "Work";
       workSessionLabel = sessionLabel;
-
-      
     } else {
       sessionLabel = "Break";
     }

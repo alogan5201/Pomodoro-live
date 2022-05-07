@@ -394,7 +394,6 @@ h6 span {
 
 h1.major,
 h2.major,
-
 h4.major,
 h5.major,
 h6.major {
@@ -490,20 +489,19 @@ hr.major {
   list-style: none;
   width: 100%;
   flex-wrap: wrap;
-  background-color: rgba(255,255,255,0.3);
-    padding: 10px;
-    border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  border-radius: 12px;
 }
 .post-archive ul h3 {
   flex: 0 0 100%;
-  
+
   color: white;
   padding: 15px;
-  margin: 0!important;
- 
+  margin: 0 !important;
+
   letter-spacing: 3px;
   line-height: 15px;
-
 }
 .post-archive ul img {
   max-width: 60px;
@@ -3230,7 +3228,7 @@ button:disabled,
   z-index: 10000;
 }
 
-#header h1  {
+#header h1 {
   -moz-transition: opacity 0.2s ease-in-out, visibility 0.2s;
   -webkit-transition: opacity 0.2s ease-in-out, visibility 0.2s;
   -ms-transition: opacity 0.2s ease-in-out, visibility 0.2s;
@@ -4354,7 +4352,6 @@ body.is-preload #banner p {
 
 @media screen and (max-width: 1280px) {
   #footer {
-    background-color: #2e3141;
     /* background-image: linear-gradient(
         to top,
         rgba(46, 49, 65, 0.8),
