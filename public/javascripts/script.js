@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
       m = m < 10 ? "0" + m : m;
 
       var time = h + ":" + m + ":" + session;
-      document.getElementById("MyClockDisplay").innerText = time;
-      document.getElementById("MyClockDisplay").textContent = time;
+      //document.getElementById("MyClockDisplay").innerText = time;
+      //document.getElementById("MyClockDisplay").textContent = time;
 
       setTimeout(showTime, 1000);
     }
